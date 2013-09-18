@@ -14,6 +14,7 @@
       (setq indent-tabs-mode nil))
       (setq php-manual-path "/usr/local/share/php/doc/html")
       (setq php-manual-url "http://www.phppro.jp/phpmanual/")
+<<<<<<< HEAD
 )
 
 ; mmm-mode in php
@@ -39,3 +40,6 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (put 'upcase-region 'disabled nil)
+=======
+)
+>>>>>>> origin/master
