@@ -12,11 +12,7 @@
 
 (add-to-list 'default-frame-alist '(foreground-color . "white")) ; 文字の色を設定
 (add-to-list 'default-frame-alist '(background-color . "#000")) ; 背景色を設定
-<<<<<<< HEAD
 (set-frame-parameter (selected-frame) 'alpha '(90 90)) ; フレーム透過設定
-=======
-(set-frame-parameter (selected-frame) 'alpha '(80 80)) ; フレーム透過設定
->>>>>>> origin/master
 
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
