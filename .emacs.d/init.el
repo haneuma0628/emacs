@@ -30,3 +30,16 @@
 (setq auto-insert-directory "~/.emacs.d/insert/")
 ; .htmlファイルのテンプレートをhtml-template.htmlに設定
 (define-auto-insert "\\.html$" "html-template.html")
+
+; load environment value
+(load-file (expand-file-name "~/.emacs.d/shellenv.el"))
+(dolist (path (reverse (split-string (getenv "PATH") ":")))
+  (add-to-list 'exec-path path))
+
+; set eshell aliases
+(setq eshell-command-aliases-list
+      (append
+       (list
+        (list "desk" "cd ~/Desktop")
+        (list "swipl" "/opt/local/bin/swipl"))
+       eshell-command-aliases-list))
