@@ -1,6 +1,6 @@
 (load (expand-file-name (concat (getenv "HOME") "/.emacs.d/init")))
 
-; php-mode
+; php-mod
 (load-library "php-mode")
 (require 'php-mode)
 
@@ -16,9 +16,10 @@
       (setq php-manual-url "http://www.phppro.jp/phpmanual/")
 )
 
-; js2-mode
+ ; js2-mode
 (load-library "js2-mode")
 (require 'js2-mode)
+(autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (put 'upcase-region 'disabled nil)
 
@@ -26,6 +27,6 @@
 (load-library "haml-mode")
 (require 'haml-mode)
  (add-hook 'haml-mode-hook
-	   (lambda ()
-	     (setq indent-tabs-mode nil)
-	     (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+               (lambda ()
+                 (setq indent-tabs-mode nil)
+                 (define-key haml-mode-map "\C-m" 'newline-and-indent)))
