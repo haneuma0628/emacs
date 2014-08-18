@@ -1,19 +1,18 @@
 (set-language-environment 'Japanese) ; 言語を日本語にする
 (prefer-coding-system 'utf-8) ; 極力UTF-8とする
 
-; load environment value
-(load-file (expand-file-name "~/.emacs.d/shellenv.el"))
-(dolist (path (reverse (split-string (getenv "PATH") ":")))
-  (add-to-list 'exec-path path))
-
 ;; load-path
 (let((default-directory (expand-file-name "~/.emacs.d/site-lisp/")))
   (add-to-list 'load-path default-directory)
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
       (normal-top-level-add-subdirs-to-load-path)))
 
-; フォント設定
-;(create-fontset-from-ascii-font "Menlo-14:weight=normal:slant=normal" nil "menlokakugo")
+; load environment value
+(load-file (expand-file-name "~/.emacs.d/shellenv.el"))
+(dolist (path (reverse (split-string (getenv "PATH") ":")))
+  (add-to-list 'exec-path path))
+
+;; 英語フォント設定
 (set-face-attribute
  'default nil
  :family "Inconsolata"
@@ -39,9 +38,11 @@
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode t)
 
-(setq-default show-trailing-whitespace t) ; 行末の空白を表示
+;; 行末の空白を表示
+(setq-default show-trailing-whitespace t)
 
-(global-hl-line-mode) ; 現在行を目立たせる
+;; 現在行を目立たせる
+(global-hl-line-mode)
 
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
@@ -52,7 +53,10 @@
 
 ; キーバインド
 (global-set-key "\C-x\C-g" 'goto-line)
-(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region) ;指定した範囲をコメントアウト
+(global-set-key "\C-x\C-c" 'query-replace)
+(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region) ; 指定した範囲をコメントアウト
+;; I never use C-x C-c
+(defalias 'exit 'save-buffers-kill-emacs)
 
 ; テンプレートの挿入
 (auto-insert-mode)
@@ -69,13 +73,11 @@
 (add-to-list 'auto-mode-alist'("\\.php$" . php-mode))
 (add-hook 'php-mode-user-hook
    '(lambda ()
-      (setq tab-width 2)
+      (setq tab-width 8)
       (setq indent-tabs-mode nil))
       (setq php-manual-path "/usr/local/share/php/doc/html")
       (setq php-manual-url "http://www.phppro.jp/phpmanual/")
 )
-
-
 
 ; js2-mode
 (load-library "js2-mode")
@@ -91,6 +93,33 @@
                (lambda ()
                  (setq indent-tabs-mode nil)
                  (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+
+; web-mode
+(require 'web-mode)
+;;; 適用する拡張子
+(add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php$"       . web-mode))
+;;; インデント数
+(defun web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-html-offset   4)
+  (setq web-mode-css-offset    4)
+  (setq web-mode-script-offset 4)
+  (setq web-mode-php-offset    4)
+  (setq web-mode-java-offset   4)
+  (setq web-mode-asp-offset    4)
+  (setq web-mode-php-offset    8))
+(add-hook 'web-mode-hook 'web-mode-hook)
+;;; Associate an engine
+(setq web-mode-engines-alist
+      '(("php"    . "\\.phtml\\'")
+        ("blade"  . "\\.blade\\."))
+)
 
 ; yatex-mode
 (setq auto-mode-alist

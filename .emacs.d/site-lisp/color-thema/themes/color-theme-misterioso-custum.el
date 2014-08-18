@@ -17,16 +17,16 @@
      ;; 選択範囲
      (region ((t (:background "#2d4948"))))
 
-     ;; モードライン ;?
-     (mode-line ((t (:foreground "#F8F8F2" :background "#000000"
-                                 :box (:line-width 1 :color "#000000" :style released-button)))))
+     ;; モードライン
+     (mode-line ((t (:foreground "#F8F8F2" :background "#0a0d26"
+                                 :box (:line-width 1 :color "#0a0d26" :style released-button)))))
      (mode-line-buffer-id ((t (:foreground nil :background nil))))
-     (mode-line-inactive ((t (:foreground "#BCBCBC" :background "#333333"
-                                          :box (:line-width 1 :color "#333333")))))
+     (mode-line-inactive ((t (:foreground "#BCBCBC" :background "#0a0d26"
+                                          :box (:line-width 1 :color "#0a0d26")))))
 
      ;; ハイライト
-     (highlight ((t (:background "#338f86" :foreground "#e1e1e0"))))
-     (hl-line ((t (:background "#293739")))) ;?
+     (highlight ((t (:background "#383B73" :foreground "#4F5173"))))
+     (hl-line ((t (:background "#293739"))))
 
      ;; 関数名
      (font-lock-function-name-face ((t (:foreground "#00ede1"))))
