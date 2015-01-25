@@ -7,4 +7,6 @@
 /eshell
 /elpa
 
+init.elc
 tramp
+shellenv.el
