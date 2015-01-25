@@ -3,9 +3,11 @@
 *#
 
 /auto-save-list
+/elpa
 /site-lisp
 /eshell
-/elpa
+.emacs.d/site-lisp
+.emacs.d/eshell
 
 init.elc
 tramp
