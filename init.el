@@ -41,6 +41,13 @@
 ;; 行末の空白を表示
 (setq-default show-trailing-whitespace t)
 
+;; インデントにタブ文字を指定
+(setq-default indent-tabs-mode t)
+;;;(setq default-indent-tabs-mode nill)
+
+;; タブ幅の設定
+(setq-default tab-width 8)
+
 ;; 現在行を目立たせる
 (global-hl-line-mode)
 
@@ -51,35 +58,33 @@
 (show-paren-mode 1) ; 対応する括弧を光らせる
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 
-;; キーバインド
+;;; キーバインド
 (global-set-key "\C-x\C-g" 'goto-line)
 (global-set-key "\C-x\C-c" 'query-replace)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region) ; 指定した範囲をコメントアウト
-;;; I never use C-x C-c
+;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
-;; テンプレートの挿入
+;;; テンプレートの挿入
 (auto-insert-mode)
 (setq auto-insert-directory "~/.emacs.d/insert/")
 ;; .htmlファイルのテンプレートをhtml-template.htmlに設定
 (define-auto-insert "\\.html$" "html-template.html")
 
-;; php-mode
+;;; php-mode
 (load-library "php-mode")
 (require 'php-mode)
 (global-font-lock-mode t)
 (require 'font-lock)
-
 (add-to-list 'auto-mode-alist'("\\.php$" . php-mode))
-(add-hook 'php-mode-user-hook
-   '(lambda ()
-      (setq tab-width 8)
-      (setq indent-tabs-mode nil))
-      (setq php-manual-path "/usr/local/share/php/doc/html")
-      (setq php-manual-url "http://www.phppro.jp/phpmanual/")
-)
+(add-hook 'php-mode-hook
+	  (lambda ()
+	    (c-set-style "bsd")))
+;; (setq tab-width 4)
+;; (setq c-basic-offset 4)
+;; (setq indent-tabs-mode t)))
 
-;; js2-mode
+;;; js2-mode
 (load-library "js2-mode")
 (require 'js2-mode)
 (autoload 'js2-mode "js2" nil t)
@@ -89,34 +94,35 @@
 ;; haml-mode
 (load-library "haml-mode")
 (require 'haml-mode)
- (add-hook 'haml-mode-hook
-               (lambda ()
-                 (setq indent-tabs-mode nil)
-                 (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+(add-hook 'haml-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; web-mode
 (require 'web-mode)
 ;;; 適用する拡張子
 (add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
 (add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$"       . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.php$"       . web-mode))
 ;;; インデント数
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 4)
-  (setq web-mode-css-indent-offset    8)
-  (setq web-mode-code-indent-offset   8)
-)
-(add-hook 'web-mode-hook 'web-mode-hook)
+  (setq web-mode-css-indent-offset 4)
+  (setq web-mode-code-indent-offset 4)
+  )
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
 ;;; Associate an engine
 (setq web-mode-engines-alist
       '(("php"    . "\\.phtml\\'")
         ("blade"  . "\\.blade\\."))
-)
+      )
 
 ;; scala-mode2
 ;; (require 'package)
@@ -141,7 +147,7 @@
 (setq YaTeX-kanji-code 4)
 (add-hook ' yatex-mode-hook
 	    '(lambda () (auto-fill-mode -1))
-)
+	    )
 
 ;; tabber.el
 (require 'tabbar)
@@ -199,10 +205,10 @@
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/bin")
               ))
-;; PATH と exec-path に同じのを追加
-(when (and (file-exists-p dir) (not (member dir exec-path)))
-  (setenv "PATH" (concat dir ":" (getenv "PATH")))
-  (setq exec-path (append (list dir) exec-path))))
+  ;; PATH と exec-path に同じのを追加
+  (when (and (file-exists-p dir) (not (member dir exec-path)))
+    (setenv "PATH" (concat dir ":" (getenv "PATH")))
+    (setq exec-path (append (list dir) exec-path))))
 
 ;;バッファ全体の句読点と読点をコンマとピリオドに変換
 (defun replace-commaperiod-buffer ()
