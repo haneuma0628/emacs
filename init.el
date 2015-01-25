@@ -71,18 +71,32 @@
 ;; .htmlファイルのテンプレートをhtml-template.htmlに設定
 (define-auto-insert "\\.html$" "html-template.html")
 
+;;; melpa
+(require 'package)
+;; MELPAを追加
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; Marmaladeを追加
+(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; 初期化
+(package-initialize)
+
+;;; auto-complete-mode
+(when (require 'auto-complete-config nil t)
+  (add-to-list 'ac-dictionary-directories
+	       "~/.emacs.d/site-lisp/ac-dict")
+  (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+  (ac-config-default))
+
 ;;; php-mode
 (load-library "php-mode")
 (require 'php-mode)
-(global-font-lock-mode t)
-(require 'font-lock)
 (add-to-list 'auto-mode-alist'("\\.php$" . php-mode))
 (add-hook 'php-mode-hook
 	  (lambda ()
 	    (c-set-style "bsd")))
-;; (setq tab-width 4)
-;; (setq c-basic-offset 4)
-;; (setq indent-tabs-mode t)))
+
+(global-font-lock-mode t)
+(require 'font-lock)
 
 ;;; js2-mode
 (load-library "js2-mode")
@@ -125,16 +139,10 @@
       )
 
 ;; scala-mode2
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;; (package-initialize)
-;; (unless (package-installed-p 'scala-mode2)
-;;   (package-refresh-contents) (package-install 'scala-mode2))
 (add-to-list 'load-path "/path/to/scala-mode2/")
 (require 'scala-mode2)
 
-;; yatex-mode
+;;; yatex-mode
 (setq auto-mode-alist
       (append '(("\\.tex$" . yatex-mode)
                 ("\\.ltx$" . yatex-mode)
@@ -149,20 +157,57 @@
 	    '(lambda () (auto-fill-mode -1))
 	    )
 
-;; tabber.el
+;; バッファ全体の句読点と読点をコンマとピリオドに変換
+(defun replace-commaperiod-buffer ()
+  (interactive "r")
+  (save-excursion
+    (replace-string "、" "，" nil (point-min) (point-max))
+    (replace-string "。" "．" nil (point-min) (point-max))))
+
+;; 選択範囲内の全角英数字を半角英数字に変換
+(defun hankaku-eisuu-region (start end)
+  (interactive "r")
+  (while (string-match
+          "[０-９Ａ-Ｚａ-ｚ]+"
+          (buffer-substring start end))
+    (save-excursion
+      (japanese-hankaku-region
+       (+ start (match-beginning 0))
+       (+ start (match-end 0))
+       ))))
+
+;; バッファ全体の全角英数字を半角英数字に変換
+(defun hankaku-eisuu-buffer ()
+  (interactive)
+  (hankaku-eisuu-region (point-min) (point-max)))
+
+;; YaTeXモードの時にのみ動作させる用に条件分岐
+(defun replace-commaperiod-before-save-if-needed ()
+  (when (memq major-mode
+              '(yatex-mode))
+    (replace-commaperiod-buffer)(hankaku-eisuu-buffer)))
+
+;; 保存前フックに追加
+(add-hook 'before-save-hook 'replace-commaperiod-before-save-if-needed)
+
+;;; tabber.el
 (require 'tabbar)
 (tabbar-mode 1)
-;;; グループ化しない
+
+;; グループ化しない
 (setq tabbar-buffer-groups-function nil)
-;;; 左に表示されるボタンを無効化
+
+;; 左に表示されるボタンを無効化
 (dolist (btn '(tabbar-buffer-home-button
                tabbar-scroll-left-button
                tabbar-scroll-right-button))
   (set btn (cons (cons "" nil)
                  (cons "" nil))))
-;;; タブ同士の間隔
+
+;; タブ同士の間隔
 (setq tabbar-separator '(1.5))
-;;; 外観変更
+
+;; 外観変更
 (set-face-attribute
  'tabbar-default nil
  :family (face-attribute 'default :family)
@@ -186,13 +231,13 @@
           (get-color-helper face attribute 0 r)
           (get-color-helper face attribute 1 g)
           (get-color-helper face attribute 2 b)))
-;;; usage
+;; usage
 (create-color-helper 'mode-line :foreground 10 -20 30)
-;;; キーに割り当てる
+;; キーに割り当てる
 (global-set-key (kbd "s-<right>") 'tabbar-forward-tab)
 (global-set-key (kbd "s-<left>") 'tabbar-backward-tab)
 
-;; pathを通す
+;;; pathを通す
 (dolist (dir (list
               "/sbin"
               "/usr/sbin"
@@ -209,36 +254,3 @@
   (when (and (file-exists-p dir) (not (member dir exec-path)))
     (setenv "PATH" (concat dir ":" (getenv "PATH")))
     (setq exec-path (append (list dir) exec-path))))
-
-;;バッファ全体の句読点と読点をコンマとピリオドに変換
-(defun replace-commaperiod-buffer ()
-  (interactive "r")
-  (save-excursion
-    (replace-string "、" "，" nil (point-min) (point-max))
-    (replace-string "。" "．" nil (point-min) (point-max))))
-
-;;選択範囲内の全角英数字を半角英数字に変換
-(defun hankaku-eisuu-region (start end)
-  (interactive "r")
-  (while (string-match
-          "[０-９Ａ-Ｚａ-ｚ]+"
-          (buffer-substring start end))
-    (save-excursion
-      (japanese-hankaku-region
-       (+ start (match-beginning 0))
-       (+ start (match-end 0))
-       ))))
-
-;;バッファ全体の全角英数字を半角英数字に変換
-(defun hankaku-eisuu-buffer ()
-  (interactive)
-  (hankaku-eisuu-region (point-min) (point-max)))
-
-;;YaTeXモードの時にのみ動作させる用に条件分岐
-(defun replace-commaperiod-before-save-if-needed ()
-  (when (memq major-mode
-              '(yatex-mode))
-    (replace-commaperiod-buffer)(hankaku-eisuu-buffer)))
-
-;;保存前フックに追加
-(add-hook 'before-save-hook 'replace-commaperiod-before-save-if-needed)

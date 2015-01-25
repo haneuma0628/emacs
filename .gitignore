@@ -4,6 +4,7 @@
 
 /auto-save-list
 /site-lisp
-/echell
+/eshell
+/elpa
 
 tramp
