@@ -12,3 +12,4 @@
 init.elc
 tramp
 shellenv.el
+ac-comphist.dat
