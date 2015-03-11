@@ -1,11 +1,13 @@
 (set-language-environment 'Japanese) ; 言語を日本語にする
 (prefer-coding-system 'utf-8) ; 極力UTF-8とする
 
-;; load-path
+; load-path
 (let((default-directory (expand-file-name "~/.emacs.d/site-lisp/")))
   (add-to-list 'load-path default-directory)
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
       (normal-top-level-add-subdirs-to-load-path)))
+(setq load-path (cons "~/.emacs.d/site-lisp/org/lsip" load-path))
+(setq load-path (cons "~/.emacs.d/site-lisp/org/contrib/lisp" load-path))
 
 ;; load environment value
 (load-file (expand-file-name "~/.emacs.d/shellenv.el"))
@@ -16,13 +18,16 @@
 (set-face-attribute
  'default nil
  :family "Inconsolata"
- :height 160)
+ :height 140
+)
 
 ;; 日本語フォント設定
 (set-fontset-font
  (frame-parameter nil 'font)
  'japanese-jisx0208
- (font-spec :family "07やさしさゴシック" :size 14)
+ (font-spec
+  :family "07やさしさゴシック"
+  :size 14)
  )
 
 ;; 色とか背景とか
@@ -96,6 +101,19 @@
 	    (c-set-style "bsd")
 	    (c-set-offset 'arglist-intro '+)
 	    (c-set-offset 'arglist-close 0)
+	    (c-set-offset 'arglist-cont 0)
+
+	    ;; arrayのインデント改善
+	    (defun ywb-php-lineup-arglist-intro (langelem)
+	      (save-excursion
+		(goto-char (cdr langelem))
+		(vector (+ (current-column) c-basic-offset))))
+	    (defun ywb-php-lineup-arglist-close (langelem)
+	      (save-excursion
+		(goto-char (cdr langelem))
+		(vector (current-column))))
+	    (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
+	    (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)
 	    ))
 
 (global-font-lock-mode t)
@@ -104,17 +122,22 @@
 ;;; js2-mode
 (load-library "js2-mode")
 (require 'js2-mode)
-(autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq-default js2-basic-offset 2
+              tab-width 2
+              indent-tabs-mode nil)
+(add-hook 'js2-mode-hook
+	  (lambda ()
+))
 (put 'upcase-region 'disabled nil)
 
 ;; haml-mode
-(load-library "haml-mode")
-(require 'haml-mode)
-(add-hook 'haml-mode-hook
-	  (lambda ()
-	    (setq indent-tabs-mode nil)
-	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+;; (load-library "haml-mode")
+;; (require 'haml-mode)
+;; (add-hook 'haml-mode-hook
+;; 	  (lambda ()
+;; 	    (setq indent-tabs-mode nil)
+;; 	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; web-mode
 (require 'web-mode)
