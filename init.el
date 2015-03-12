@@ -65,7 +65,7 @@
 ;; 行末の空白を表示
 (setq-default show-trailing-whitespace t)
 
-;; タブ幅の設定
+;; ;; タブ幅の設定
 (setq-default tab-width 8)
 
 ;; インデントにタブ文字を指定

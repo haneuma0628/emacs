@@ -5,12 +5,18 @@
 
 (add-hook 'php-mode-hook
           (lambda ()
+
+            ;; use tab-indent
+            (setq indent-tabs-mode t)
+            (setq tab-width 8)
+
+            ;; setting indent-style
             (c-set-style "bsd")
             (c-set-offset 'arglist-intro '+)
             (c-set-offset 'arglist-close 0)
             (c-set-offset 'arglist-cont 0)
 
-            ;; arrayのインデント改善
+            ;; improve array-indent
             (defun ywb-php-lineup-arglist-intro (langelem)
               (save-excursion
                 (goto-char (cdr langelem))
@@ -23,6 +29,7 @@
             (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)
             ))
 
+;; coloring for code
 (global-font-lock-mode t)
 (require 'font-lock)
 
