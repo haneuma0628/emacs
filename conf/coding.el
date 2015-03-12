@@ -29,7 +29,7 @@
             (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)
             ))
 
-;; coloring for code
+;; 色
 (global-font-lock-mode t)
 (require 'font-lock)
 
@@ -45,7 +45,7 @@
 ))
 (put 'upcase-region 'disabled nil)
 
-;; haml-mode
+;;; haml-mode
 ;; (load-library "haml-mode")
 ;; (require 'haml-mode)
 ;; (add-hook 'haml-mode-hook
