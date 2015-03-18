@@ -21,6 +21,7 @@
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 
 ;; カッコを虹色にシンタックスハイライト
+
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode t)
 
