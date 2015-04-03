@@ -4,7 +4,6 @@
 
 /auto-save-list
 /elpa
-/site-lisp
 /eshell
 .emacs.d/site-lisp
 .emacs.d/eshell
