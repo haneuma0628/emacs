@@ -3,8 +3,6 @@
 (color-theme-initialize)
 (color-theme-misterioso-custum)
 
-(add-to-list 'default-frame-alist '(foreground-color . "white"))
-(add-to-list 'default-frame-alist '(background-color . "#0a0d26"))
 (set-frame-parameter (selected-frame) 'alpha '(90 90))
 
 ;; いろいろ
@@ -13,7 +11,7 @@
 
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
 
-(global-hl-line-mode) ; 現在行を目立たせる
+(global-hl-line-mode t) ; 現在行を目立たせる
 
 (blink-cursor-mode 0) ; カーソルの点滅を止める
 
@@ -21,7 +19,6 @@
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 
 ;; カッコを虹色にシンタックスハイライト
-
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode t)
 

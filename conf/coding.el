@@ -40,9 +40,6 @@
 (setq-default js2-basic-offset 2
               tab-width 2
               indent-tabs-mode nil)
-(add-hook 'js2-mode-hook
-	  (lambda ()
-))
 (put 'upcase-region 'disabled nil)
 
 ;;; haml-mode
@@ -72,7 +69,12 @@
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
   )
-(add-hook 'web-mode-hook  'my-web-mode-hook)
+(add-hook 'web-mode-hook 'my-web-mode-hook)
+
+;; web-modeにhighlight-indentation-modeをhookする
+(require 'highlight-indentation)
+(add-hook 'web-mode-hook 'highlight-indentation-mode)
+(add-hook 'web-mode-hook 'highlight-indentation-current-column-mode)
 
 ;; Associate an engine
 (setq web-mode-engines-alist

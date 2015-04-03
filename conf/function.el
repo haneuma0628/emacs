@@ -5,6 +5,11 @@
   (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
   (ac-config-default))
 
+;;; highlight-indentation
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#212338")
+(set-face-background 'highlight-indentation-current-column-face "#35395c")
+
 ;;; パッケージ管理 melpa
 (require 'package)
 
