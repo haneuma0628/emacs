@@ -15,6 +15,8 @@
 
 (blink-cursor-mode 0) ; カーソルの点滅を止める
 
+(setq scroll-step 1) ; 1行ずつスクロール
+
 (show-paren-mode 1) ; 対応する括弧を光らせる
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 

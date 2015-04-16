@@ -73,8 +73,10 @@
 (create-color-helper 'mode-line :foreground 10 -20 30)
 
 ;; キーに割り当てる
-(global-set-key (kbd "s-<right>") 'tabbar-forward-tab)
-(global-set-key (kbd "s-<left>") 'tabbar-backward-tab)
+;; (global-set-key (kbd "s-<right>") 'tabbar-forward-tab)
+;; (global-set-key (kbd "s-<left>") 'tabbar-backward-tab)
+(global-set-key [C-tab] 'tabbar-forward-tab)
+(global-set-key [C-S-tab] 'tabbar-backward-tab)
 
 ;;; テンプレートの設定
 (auto-insert-mode)
