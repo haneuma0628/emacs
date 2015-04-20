@@ -24,3 +24,7 @@
 ;;; 言語設定
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
+
+;;; trampの設定
+(require 'tramp)
+(setq tramp-default-method "scpx")

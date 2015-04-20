@@ -1,11 +1,11 @@
-;; Emacsの見た目
+;;; Emacsの見た目
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-misterioso-custum)
 
 (set-frame-parameter (selected-frame) 'alpha '(90 90))
 
-;; いろいろ
+;;; いろいろ
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
 
@@ -17,6 +17,7 @@
 
 (setq scroll-step 1) ; 1行ずつスクロール
 
+;;; カッコ
 (show-paren-mode 1) ; 対応する括弧を光らせる
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 
@@ -24,14 +25,22 @@
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode t)
 
-;; 英語フォント設定
+;;; 行番号の表示
+(require 'linum)
+(global-linum-mode t)
+(set-face-attribute 'linum nil
+                    :foreground "#35395c"
+                    :height 0.9)
+(setq linum-format "%3d ")
+
+;;; 英語フォント設定
 (set-face-attribute
  'default nil
  :family "Inconsolata"
  :height 140
 )
 
-;; 日本語フォント設定
+;;; 日本語フォント設定
 (set-fontset-font
  (frame-parameter nil 'font)
  'japanese-jisx0208

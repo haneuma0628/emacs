@@ -12,13 +12,13 @@
       (foreground-color . "#f8f8f2")
       (cursor-color . "#0a0d26"))
 
-     (default ((t (:background "#0a0d26" :foreground "#F8F8F2"))))
+     (default ((t (:background "#0a0d26" :foreground "#f8f8f2"))))
 
      ;; 選択範囲
      (region ((t (:background "#35395c"))))
 
      ;; モードライン
-     (mode-line ((t (:foreground "#F8F8F2" :background "#0a0d26"
+     (mode-line ((t (:foreground "#f8f8f2" :background "#0a0d26"
                                  :box (:line-width 1 :color "#0a0d26" :style released-button)))))
      (mode-line-buffer-id ((t (:foreground nil :background nil))))
      (mode-line-inactive ((t (:foreground "#BCBCBC" :background "#0a0d26"
