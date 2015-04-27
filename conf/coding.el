@@ -42,18 +42,13 @@
               indent-tabs-mode nil)
 (put 'upcase-region 'disabled nil)
 
-;;; haml-mode
-;; (load-library "haml-mode")
-;; (require 'haml-mode)
-;; (add-hook 'haml-mode-hook
-;; 	  (lambda ()
-;; 	    (setq indent-tabs-mode nil)
-;; 	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+;;; css-mode
+(require 'css-mode)
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;;; web-mode
 (require 'web-mode)
-
-;; 適用する拡張子
 (add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
@@ -62,7 +57,6 @@
 (add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$"       . web-mode))
 
-;; インデント数
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 4)
