@@ -83,3 +83,10 @@
 (load-library "yaml-mode")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;;; ruby-mode
+(defun my-ruby-mode-hook ()
+  "Hooks for Ruby mode."
+  (setq ruby-deep-indent-paren-style nil)
+)
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
