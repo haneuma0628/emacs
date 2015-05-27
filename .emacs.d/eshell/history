@@ -1,0 +1,82 @@
+ls
+cd~
+cd
+cd ../../Develop/MAMP/
+ls
+cd ../
+ls
+cd starbank/
+ks
+ls
+cd fuel/app/classes/controller/
+ls
+rm #	
+ls
+rm #*
+rm \#forgotpassword.php\# 
+ls
+cd clients/
+ks
+ls
+cd 
+cd Develop/starbank/fuel/app/classes/controller/
+ls
+cd ../../
+cd views/
+ls
+cd ../../
+cd app/classes/controller/
+ls
+cd
+cd Develop/starbank/fuel/app/classes/controller
+ls
+cd ../../
+ls -al
+rm .htccess\~
+rm .htccess 
+cd 
+cd Develop/Git/starbank/
+ls -al
+ls
+cd fuel/app/
+ls
+ls -al
+rm .htaccess\~
+rm .htaccess 
+ls
+ls -al
+cd ../../
+ls -al
+rm .htaccess 
+ls
+cd fuel/
+cd ../
+cd fuel/
+ls
+ls -al
+rm .htaccess\~
+rm .htaccess 
+cd ../
+ls
+ls -al
+rm .htaccess\~
+rm .htaccess 
+cd fuel/app/
+ls -al
+cd views/
+ls
+cd productions/
+ls
+
+cd ../
+cd productions/
+ls
+emacs layout.php 
+cd ../
+cd ../classes/controller/
+cd productions/
+cd productions/
+ls
+cd ../
+ls
+ssh hassakutea.com

@@ -5,8 +5,7 @@
 /auto-save-list
 /elpa
 /eshell
-.emacs.d/site-lisp
-.emacs.d/eshell
+/site-lisp
 
 init.elc
 tramp
