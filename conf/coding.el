@@ -88,5 +88,6 @@
 (defun my-ruby-mode-hook ()
   "Hooks for Ruby mode."
   (setq ruby-deep-indent-paren-style nil)
+  (smart-paren-mode)
 )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
