@@ -33,6 +33,9 @@
 (global-font-lock-mode t)
 (require 'font-lock)
 
+;;; c-mode
+(require 'fish-mode)
+
 ;;; js2-mode
 (load-library "js2-mode")
 (require 'js2-mode)
