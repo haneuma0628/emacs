@@ -27,6 +27,8 @@
                 (vector (current-column))))
             (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
             (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)
+
+            (smart-paren-mode)
             ))
 
 ;; 色
@@ -48,7 +50,6 @@
 ;;; css-mode
 (require 'css-mode)
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 
 ;;; web-mode
 (require 'web-mode)
@@ -58,7 +59,7 @@
 (add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$"       . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$"      . web-mode))
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
@@ -91,6 +92,7 @@
 (defun my-ruby-mode-hook ()
   "Hooks for Ruby mode."
   (setq ruby-deep-indent-paren-style nil)
-  (smart-paren-mode)
+  ;; (smart-paren-mode)
+  (smartparens-mode)
 )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
