@@ -1,16 +1,16 @@
-;;; auto-complete-mode
+;;; auto-complete-mode 補完
 (when (require 'auto-complete-config nil t)
   (add-to-list 'ac-dictionary-directories
 	       "~/.emacs.d/site-lisp/ac-dict")
   (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
   (ac-config-default))
 
-;;; highlight-indentation
+;;; highlight-indentation インデントをいい感じにハイライトしてくれる
 (require 'highlight-indentation)
 (set-face-background 'highlight-indentation-face "#212338")
 (set-face-background 'highlight-indentation-current-column-face "#35395c")
 
-;;; パッケージ管理 melpa
+;;; melpa パッケージ管理
 (require 'package)
 
 ;; MELPAを追加
@@ -22,13 +22,17 @@
 ;; 初期化
 (package-initialize)
 
-;;; キーバインド
-(global-set-key "\C-x\C-g" 'goto-line)
-(global-set-key "\C-x\C-c" 'query-replace)
-(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-(defalias 'exit 'save-buffers-kill-emacs)
+;;; tramp リモートでファイルをもごもごできる
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash")) ; ssh先をbashで開く。hang対策
 
-;;; tabberの設定
+;;; キーバインド
+(global-set-key "\C-cg" 'goto-line)
+(global-set-key "\C-cr" 'query-replace)
+(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
+(global-set-key "\C-x\C-c" nil) ; C-x C-cでemacsをkillしない
+(defalias 'exit 'save-buffers-kill-emacs) ; M-x exitでemacsをkill
+
+;;; タブエディタっぽくできる tabber
 (require 'tabbar)
 (tabbar-mode 1)
 
@@ -82,5 +86,5 @@
 (auto-insert-mode)
 (setq auto-insert-directory "~/.emacs.d/insert/")
 
-;; .htmlファイルのテンプレートをhtml-template.htmlに設定
-(define-auto-insert "\\.html$" "html-template.html")
+;; ;; .htmlファイルのテンプレートをhtml-template.htmlに設定
+;; (define-auto-insert "\\.html$" "html-template.html")

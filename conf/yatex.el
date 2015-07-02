@@ -1,4 +1,4 @@
-;;; yatex-mode
+;; yatex-mode
 (setq auto-mode-alist
       (append '(("\\.tex$" . yatex-mode)
                 ("\\.ltx$" . yatex-mode)
