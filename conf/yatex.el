@@ -1,11 +1,11 @@
 ;; yatex-mode
-(setq auto-mode-alist
-      (append '(("\\.tex$" . yatex-mode)
-                ("\\.ltx$" . yatex-mode)
-                ("\\.cls$" . yatex-mode)
-                ("\\.sty$" . yatex-mode)
-                ("\\.clo$" . yatex-mode)
-                ("\\.bbl$" . yatex-mode)) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.tex$" . yatex-mode))
+(add-to-list 'auto-mode-alist '("\\.lxt$" . yatex-mode))
+(add-to-list 'auto-mode-alist '("\\.cls$" . yatex-mode))
+(add-to-list 'auto-mode-alist '("\\.sty$" . yatex-mode))
+(add-to-list 'auto-mode-alist '("\\.clo$" . yatex-mode))
+(add-to-list 'auto-mode-alist '("\\.bbl$" . yatex-mode))
+
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8")
 (setq YaTeX-kanji-code 4)
