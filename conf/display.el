@@ -3,7 +3,7 @@
 (color-theme-initialize)
 (color-theme-misterioso-custum)
 
-(set-frame-parameter (selected-frame) 'alpha '(90 90))
+(set-frame-parameter (selected-frame) 'alpha '(75 90))
 
 ;;; いろいろ
 (menu-bar-mode -1) ; メニューバーを消す
