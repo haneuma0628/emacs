@@ -1,4 +1,7 @@
 ;; yatex-mode
+(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(modify-coding-system-alist 'file "\\.tex\\'" 'utf-8)
+
 (add-to-list 'auto-mode-alist '("\\.tex$" . yatex-mode))
 (add-to-list 'auto-mode-alist '("\\.lxt$" . yatex-mode))
 (add-to-list 'auto-mode-alist '("\\.cls$" . yatex-mode))
@@ -6,7 +9,6 @@
 (add-to-list 'auto-mode-alist '("\\.clo$" . yatex-mode))
 (add-to-list 'auto-mode-alist '("\\.bbl$" . yatex-mode))
 
-(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8")
 (setq YaTeX-kanji-code 4)
 (add-hook ' yatex-mode-hook
