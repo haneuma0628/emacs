@@ -1,6 +1,5 @@
 ;; yatex-mode
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-(modify-coding-system-alist 'file "\\.tex\\'" 'utf-8)
 
 (add-to-list 'auto-mode-alist '("\\.tex$" . yatex-mode))
 (add-to-list 'auto-mode-alist '("\\.lxt$" . yatex-mode))
