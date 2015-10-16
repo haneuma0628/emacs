@@ -1,7 +1,7 @@
 ;;; Emacsの見た目
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-misterioso-custum)
+(setq custom-theme-directory "~/.emacs.d/themes/")
+(load-theme 'my-misterious t)
+(enable-theme 'my-misterious)
 
 (set-frame-parameter (selected-frame) 'alpha '(75 90))
 

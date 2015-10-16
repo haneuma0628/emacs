@@ -9,7 +9,7 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 
-(add-to-load-path "site-lisp" "elpa" "conf")
+(add-to-load-path "site-lisp" "elpa" "conf" "themes")
 
 (load "setting") ; pathとか設定
 (load "template") ; テンプレートの設定
