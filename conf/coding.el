@@ -96,3 +96,7 @@
   (smartparens-mode)
 )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+
+;;; csharp-mode
+(require 'csharp-mode)
+(add-to-list 'auto-mode-alist'("\\.cs$" . csharp-mode))
