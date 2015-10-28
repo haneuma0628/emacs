@@ -1,5 +1,6 @@
 ;; yatex-mode
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(modify-coding-system-alist 'file "\\.tex\\'" 'utf-8)
 
 (add-to-list 'auto-mode-alist '("\\.tex$" . yatex-mode))
 (add-to-list 'auto-mode-alist '("\\.lxt$" . yatex-mode))
@@ -10,9 +11,9 @@
 
 (setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8")
 (setq YaTeX-kanji-code 4)
-(add-hook ' yatex-mode-hook
-	    '(lambda () (auto-fill-mode -1))
-	    )
+(add-hook 'yatex-mode-hook
+	    (lambda ()
+	      (setq auto-fill-function nill)))
 
 ;; バッファ全体の句読点と読点をコンマとピリオドに変換
 (defun replace-commaperiod-buffer ()
