@@ -10,7 +10,7 @@
 (tool-bar-mode -1) ; ツールバーを消す
 
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
-
+(setq-default line-spacing 3) ; 行間
 (global-hl-line-mode t) ; 現在行を目立たせる
 
 (blink-cursor-mode 0) ; カーソルの点滅を止める
@@ -41,7 +41,8 @@
 ;;; 英語フォント設定
 (set-face-attribute
  'default nil
- :family "Inconsolata"
+ ;; :family "Inconsolata"
+ :family "Ricty"
  :height 140
 )
 
@@ -50,6 +51,8 @@
  (frame-parameter nil 'font)
  'japanese-jisx0208
  (font-spec
-  :family "07やさしさゴシック"
-  :size 14)
+  ;; :family "07やさしさゴシック"
+  :family "Ricty"
+  :size 14
+  :height 18)
  )
