@@ -29,7 +29,6 @@
 
 ;; カッコを虹色にシンタックスハイライト
 (require 'rainbow-delimiters)
-(global-rainbow-delimiters-mode t)
 
 
 ;;; 行番号の表示
@@ -47,7 +46,6 @@
  :family "Ricty"
  :height 140
 )
-
 
 ;;; highlight-indentation インデントをいい感じにハイライトしてくれる
 (require 'highlight-indentation)
