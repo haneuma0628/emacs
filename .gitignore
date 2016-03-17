@@ -1,0 +1,14 @@
+*~
+.DS_Store
+*#
+
+/auto-save-list
+/elpa
+/eshell
+/site-lisp
+.cask
+
+init.elc
+tramp
+shellenv.el
+ac-comphist.dat

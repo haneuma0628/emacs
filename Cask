@@ -1,0 +1,10 @@
+(source gnu)
+(source melpa)
+
+(depends-on "company")
+(depends-on "csharp-mode")
+(depends-on "fish-mode")
+(depends-on "php-mode")
+(depends-on "tabbar")
+(depends-on "yatex")
+(depends-on "web-mode")
