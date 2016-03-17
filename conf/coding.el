@@ -82,11 +82,9 @@
       )
 
 ;;; scala-mode2
-(add-to-list 'load-path "/path/to/scala-mode2/")
-(require 'scala-mode2)
+(require 'scala-mode)
 
 ;;; yaml-mode
-(load-library "yaml-mode")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 

@@ -1,6 +1,11 @@
-;;; Cask（パッケージ管理）
-(require 'cask "/usr/local/opt/cask/cask.el")
+;;; パッケージ管理 - Cask
+(require 'cask)
 (cask-initialize)
+
+;;; パッケージ管理 - package
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 
 ;;; キーバインド

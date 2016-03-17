@@ -6,8 +6,8 @@
 
 (depends-on "yatex")
 
-(depends-on "org-mode")
 (depends-on "rainbow-delimiters" :git "https://github.com/Fanael/rainbow-delimiters.git")
+(depends-on "highlight-indentation" :git "https://github.com/antonj/Highlight-Indentation-for-Emacs.git")
 
 ;;; programming
 (depends-on "csharp-mode")
