@@ -1,5 +1,11 @@
 ;;; 各ディレクトリにパスを通す
-;; load-pathを追加する関数
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
@@ -8,8 +14,7 @@
         (add-to-list 'load-path default-directory)
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
-
-(add-to-load-path "site-lisp" "elpa" "conf" "themes")
+(add-to-load-path "elpa" "conf" "themes")
 
 (load "setting") ; pathとか設定
 (load "template") ; テンプレートの設定

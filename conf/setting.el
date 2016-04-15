@@ -8,6 +8,7 @@
               "/sw/bin"
               "/usr/local/bin"
               "/usr/texbin"
+              "/usr/local/texlive/2015/bin/x86_64-darwin"
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/bin")
               ))
