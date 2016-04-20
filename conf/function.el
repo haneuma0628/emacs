@@ -1,5 +1,5 @@
 ;;; パッケージ管理 - Cask
-(require 'cask)
+(require 'cask "/usr/local/opt/cask/cask.el")
 (cask-initialize)
 
 ;;; パッケージ管理 - package

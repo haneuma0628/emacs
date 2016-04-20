@@ -1,5 +1,4 @@
 ;;; php-mode
-(load-library "php-mode")
 (require 'php-mode)
 (add-to-list 'auto-mode-alist'("\\.php$" . php-mode))
 
@@ -39,7 +38,6 @@
 (require 'fish-mode)
 
 ;;; js2-mode
-(load-library "js2-mode")
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq-default js2-basic-offset 2
@@ -60,7 +58,6 @@
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css$"      . web-mode))
-(add-to-list 'auto-mode-alist '("\\.scss$"      . web-mode))
 (add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
 
 (defun my-web-mode-hook ()
@@ -100,3 +97,20 @@
 ;;; csharp-mode
 (require 'csharp-mode)
 (add-to-list 'auto-mode-alist'("\\.cs$" . csharp-mode))
+
+;;; markdown
+(require 'markdown-mode)
+
+(defun eww-open-file-other-window (file)
+  (if (one-window-p)(split-window))
+  (other-window 1)
+  (eww-open-file file))
+
+(defun markdown-render-ewww ()
+  (interactive)
+  (message (buffer-file-name))
+  (call-process "/usr/local/bin/grip" nil nil nil
+                "--export" (buffer-file-name) "/tmp/grip.html")
+  (eww-open-file-other-window "/tmp/grip.html"))
+
+(define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-ewww)

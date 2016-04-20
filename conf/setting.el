@@ -7,6 +7,7 @@
               "/opt/local/bin"
               "/sw/bin"
               "/usr/local/bin"
+              "/usr/local/opt/cask"
               "/usr/texbin"
               "/usr/local/texlive/2015/bin/x86_64-darwin"
               (expand-file-name "~/bin")

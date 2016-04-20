@@ -28,7 +28,7 @@
 ;; (ad-activate 'delete-backward-char)
 
 ;; カッコを虹色にシンタックスハイライト
-(require 'rainbow-delimiters)
+;; (require 'rainbow-delimiters)
 
 
 ;;; 行番号の表示
@@ -49,9 +49,9 @@
 
 
 ;;; highlight-indentation インデントをいい感じにハイライトしてくれる
-(require 'highlight-indentation)
-(set-face-background 'highlight-indentation-face "#212338")
-(set-face-background 'highlight-indentation-current-column-face "#35395c")
+;; (require 'highlight-indentation)
+;; (set-face-background 'highlight-indentation-face "#212338")
+;; (set-face-background 'highlight-indentation-current-column-face "#35395c")
 
 
 ;;; タブエディタっぽくできる tabber
