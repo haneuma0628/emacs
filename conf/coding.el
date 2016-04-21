@@ -4,7 +4,6 @@
 
 (add-hook 'php-mode-hook
           (lambda ()
-
             ;; use tab-indent
             (setq indent-tabs-mode t)
             (setq tab-width 8)
@@ -34,8 +33,10 @@
 (global-font-lock-mode t)
 (require 'font-lock)
 
+
 ;;; c-mode
 (require 'fish-mode)
+
 
 ;;; js2-mode
 (require 'js2-mode)
@@ -45,9 +46,6 @@
               indent-tabs-mode nil)
 (put 'upcase-region 'disabled nil)
 
-;;; css-mode
-(require 'css-mode)
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
 ;;; web-mode
 (require 'web-mode)
@@ -78,12 +76,15 @@
         ("blade"  . "\\.blade\\."))
       )
 
+
 ;;; scala-mode2
 (require 'scala-mode)
+
 
 ;;; yaml-mode
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 
 ;;; ruby-mode
 (defun my-ruby-mode-hook ()
@@ -94,9 +95,11 @@
 )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
+
 ;;; csharp-mode
 (require 'csharp-mode)
 (add-to-list 'auto-mode-alist'("\\.cs$" . csharp-mode))
+
 
 ;;; markdown
 (require 'markdown-mode)
@@ -114,3 +117,8 @@
   (eww-open-file-other-window "/tmp/grip.html"))
 
 (define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-ewww)
+
+
+;;; haml-mode
+(require 'haml-mode)
+(add-to-list 'auto-mode-alist'("\\.haml$" . haml-mode))

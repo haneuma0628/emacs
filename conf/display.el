@@ -1,10 +1,7 @@
 ;;; Emacsの見た目
-;; (setq custom-theme-directory "~/.emacs.d/themes/")
-;; (load-theme 'my-misterious t)
-;; (enable-theme 'my-misterious)
 (load-theme 'wombat t)
+(set-frame-parameter (selected-frame) 'alpha '(90 90))
 
-(set-frame-parameter (selected-frame) 'alpha '(75 90))
 
 ;;; いろいろ
 (menu-bar-mode -1) ; メニューバーを消す
@@ -13,10 +10,9 @@
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
 (setq-default line-spacing 3) ; 行間
 (global-hl-line-mode t) ; 現在行を目立たせる
-
 (blink-cursor-mode 0) ; カーソルの点滅を止める
-
 (setq scroll-step 1) ; 1行ずつスクロール
+
 
 ;;; カッコ
 (show-paren-mode 1) ; 対応する括弧を光らせる
@@ -28,14 +24,25 @@
 ;; (ad-activate 'delete-backward-char)
 
 ;; カッコを虹色にシンタックスハイライト
-;; (require 'rainbow-delimiters)
+(require 'rainbow-delimiters)
+(require 'cl-lib)
+(require 'color)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(defun rainbow-delimiters-using-bright-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+     (cl-callf color-saturate-name (face-foreground face) 16))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-bright-colors)
 
 
 ;;; 行番号の表示
 (require 'linum)
 (global-linum-mode t)
 (set-face-attribute 'linum nil
-                    :foreground "#35395c"
+                    :foreground "#125f5f"
                     :height 0.9)
 (setq linum-format "%3d ")
 
@@ -49,10 +56,16 @@
 
 
 ;;; highlight-indentation インデントをいい感じにハイライトしてくれる
-;; (require 'highlight-indentation)
-;; (set-face-background 'highlight-indentation-face "#212338")
-;; (set-face-background 'highlight-indentation-current-column-face "#35395c")
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#353535")
+(set-face-background 'highlight-indentation-current-column-face "#4c4c4c")
+(add-hook 'prog-mode-hook 'highlight-indentation-mode)
 
+
+;;; nyan-mode
+(require 'nyan-mode)
+(nyan-mode)
+(nyan-start-animation)
 
 ;;; タブエディタっぽくできる tabber
 (require 'tabbar)
@@ -97,3 +110,7 @@
           (get-color-helper face attribute 2 b)))
 ;; usage
 (create-color-helper 'mode-line :foreground 10 -20 30)
+
+;; キーに割り当てる
+(global-set-key [C-tab] 'tabbar-forward-tab)
+(global-set-key [C-S-tab] 'tabbar-backward-tab)

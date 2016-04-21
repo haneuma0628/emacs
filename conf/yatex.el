@@ -1,6 +1,3 @@
-(unless (package-installed-p 'yatex)
-  (package-refresh-contents) (package-install 'yatex))
-
 ;;; yatex-mode
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (modify-coding-system-alist 'file "\\.tex\\'" 'utf-8)

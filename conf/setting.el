@@ -18,14 +18,17 @@
     (setenv "PATH" (concat dir ":" (getenv "PATH")))
     (setq exec-path (append (list dir) exec-path))))
 
+
 ;;; 環境変数を読む
 (load-file (expand-file-name "~/.emacs.d/shellenv.el"))
 (dolist (path (reverse (split-string (getenv "PATH") ":")))
   (add-to-list 'exec-path path))
 
+
 ;;; 言語設定
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
+
 
 ;;; trampの設定
 (require 'tramp)

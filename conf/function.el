@@ -9,15 +9,11 @@
 
 
 ;;; キーバインド
-(global-set-key "\C-cg" 'goto-line)
-(global-set-key "\C-cr" 'query-replace)
-(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-(global-set-key "\C-x\C-c" nil) ; C-x C-cでemacsをkillしない
+(bind-key "\C-cg" 'goto-line)
+(bind-key "\C-cr" 'query-replace)
+(bind-key (kbd "C-c ;") 'comment-or-uncomment-region)
+(bind-key "\C-x\C-c" nil) ; C-x C-cでemacsをkillしない
 (defalias 'exit 'save-buffers-kill-emacs) ; M-x exitでemacsをkill
-
-;; キーに割り当てる
-(global-set-key [C-tab] 'tabbar-forward-tab)
-(global-set-key [C-S-tab] 'tabbar-backward-tab)
 
 
 ;;; company-mode(補完)
@@ -26,7 +22,10 @@
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 2)
 
+
 ;;; tramp リモートでファイルをもごもごできる
+(require 'tramp)
+(setq tramp-default-method "ssh")
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash")) ; ssh先をbashで開く。hang対策
 
 
