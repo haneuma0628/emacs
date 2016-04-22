@@ -30,6 +30,10 @@
 (prefer-coding-system 'utf-8)
 
 
+;;; fix that cannot connect melpa, gnu
+(load-library "url-handlers")
+
+
 ;;; trampの設定
 (require 'tramp)
 (setq tramp-default-method "scpx")

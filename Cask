@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
-(source melpa-stable)
+;; (source "melpa-stable" "http://hiddencameras.milkbox.net/packages/")
+;; (source "elpy" "http://jorgenschaefer.github.io/packages/")
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -31,8 +32,8 @@
 (depends-on "company")
 (depends-on "tabbar")
 (depends-on "yatex")
-(depends-on "rainbow-delimiters" :git "https://github.com/Fanael/rainbow-delimiters.git")
-(depends-on "highlight-indentation" :git "https://github.com/antonj/Highlight-Indentation-for-Emacs.git")
+(depends-on "rainbow-delimiters")
+(depends-on "highlight-indentation")
 (depends-on "csharp-mode")
 (depends-on "scala-mode")
 ;; (depends-on "r-mode")
@@ -42,4 +43,4 @@
 (depends-on "yaml-mode")
 (depends-on "fish-mode")
 (depends-on "haml-mode")
-
+(depends-on "markdown-mode")

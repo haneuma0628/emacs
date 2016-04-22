@@ -44,7 +44,7 @@
 (set-face-attribute 'linum nil
                     :foreground "#125f5f"
                     :height 0.9)
-(setq linum-format "%3d ")
+(setq linum-format "%3d")
 
 
 ;;; フォント設定
