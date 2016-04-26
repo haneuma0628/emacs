@@ -101,24 +101,6 @@
 (add-to-list 'auto-mode-alist'("\\.cs$" . csharp-mode))
 
 
-;;; markdown
-(require 'markdown-mode)
-
-(defun eww-open-file-other-window (file)
-  (if (one-window-p)(split-window))
-  (other-window 1)
-  (eww-open-file file))
-
-(defun markdown-render-ewww ()
-  (interactive)
-  (message (buffer-file-name))
-  (call-process "/usr/local/bin/grip" nil nil nil
-                "--export" (buffer-file-name) "/tmp/grip.html")
-  (eww-open-file-other-window "/tmp/grip.html"))
-
-(define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-ewww)
-
-
 ;;; haml-mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist'("\\.haml$" . haml-mode))

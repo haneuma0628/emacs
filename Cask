@@ -44,3 +44,4 @@
 (depends-on "fish-mode")
 (depends-on "haml-mode")
 (depends-on "markdown-mode")
+(depends-on "evernote-mode" :git "https://github.com/pymander/evernote-mode.git")
