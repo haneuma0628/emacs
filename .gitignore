@@ -8,6 +8,7 @@
 /site-lisp
 .cask
 /url
+/backups
 
 init.elc
 tramp

@@ -70,4 +70,4 @@
                 "--export" (buffer-file-name) "/tmp/grip.html")
   (eww-open-file-other-window "/tmp/grip.html"))
 
-(define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-
+(define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-eww)
