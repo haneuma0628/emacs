@@ -1,10 +1,9 @@
 ;;; キーバインド
-(bind-key "C-c C-g" 'goto-line)
-(bind-key "C-c C-r" 'query-replace)
-(bind-key "C-c C-a" 'align)
-(bind-key "C-c a r" 'align-regexp)
-(bind-key "C-c x;" 'comment-or-uncomment-region)
+(bind-key "C-j" 'goto-line)
+(bind-key "C-r" 'query-replace)
+(bind-key "C-;" 'comment-or-uncomment-region)
 (bind-key "C-t" 'other-window)
+(bind-key "C-c a" 'align)
 (bind-key "ESC ESC ESC" nil) ; 分割破壊阻止
 (bind-key "\C-x \C-c" nil) ; C-x C-cでemacsをkillしない
 (defalias 'exit 'save-buffers-kill-emacs) ; M-x exitでemacsをkill
@@ -28,3 +27,18 @@
       (cons "." "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
       `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+
+
+;;; ag + wgrep
+;; ag
+(require 'ag)
+(setq default-process-coding-system 'utf-8-unix) ; ag 検索結果のエンコード指定
+(setq ag-highlight-search t) ; 検索キーワードをハイライト
+(setq ag-reuse-buffers t) ; 検索用バッファを使い回す (検索ごとに新バッファを作らない)
+
+;; wgrep
+(add-hook 'ag-mode-hook '(lambda ()
+                           (require 'wgrep-ag)
+                           (setq wgrep-auto-save-buffer t) ; 編集完了と同時に保存
+                           (setq wgrep-enable-key "r") ; "r" キーで編集モードに
+                           (wgrep-ag-setup)))

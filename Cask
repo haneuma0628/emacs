@@ -45,3 +45,6 @@
 (depends-on "haml-mode")
 (depends-on "markdown-mode")
 (depends-on "evernote-mode" :git "https://github.com/pymander/evernote-mode.git")
+(depends-on "ag") ; + brew install ag
+(depends-on "wgrep")
+(depends-on "wgrep-ag")
