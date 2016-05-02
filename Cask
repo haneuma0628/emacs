@@ -1,7 +1,5 @@
 (source gnu)
 (source melpa)
-;; (source "melpa-stable" "http://hiddencameras.milkbox.net/packages/")
-;; (source "elpy" "http://jorgenschaefer.github.io/packages/")
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -44,7 +42,6 @@
 (depends-on "fish-mode")
 (depends-on "haml-mode")
 (depends-on "markdown-mode")
-(depends-on "evernote-mode" :git "https://github.com/pymander/evernote-mode.git")
 (depends-on "ag") ; + brew install ag
 (depends-on "wgrep")
 (depends-on "wgrep-ag")
