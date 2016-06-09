@@ -44,3 +44,7 @@
                            (setq wgrep-auto-save-buffer t) ; 編集完了と同時に保存
                            (setq wgrep-enable-key "r") ; "r" キーで編集モードに
                            (wgrep-ag-setup)))
+
+
+;;; elnode
+(require 'elnode)

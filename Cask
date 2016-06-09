@@ -1,5 +1,6 @@
 (source gnu)
 (source melpa)
+(source marmalade)
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -45,3 +46,6 @@
 (depends-on "ag") ; + brew install ag
 (depends-on "wgrep")
 (depends-on "wgrep-ag")
+(depends-on "annotate")
+(depends-on "elnode")
+(depends-on "mongo")
