@@ -49,3 +49,4 @@
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
+(depends-on "haskell-mode")
