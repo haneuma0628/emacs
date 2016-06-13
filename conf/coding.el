@@ -116,3 +116,9 @@
         (auto-fill-mode 1)
         (if (eq window-system 'x)
             (font-lock-mode 1))))
+
+
+;;; haskell
+(require 'haskell-mode)
+(add-to-list 'auto-mode-alist'("\\.hs$" . haskell-mode))
+(add-to-list 'auto-mode-alist'("\\.lhs$" . haskell-mode))
