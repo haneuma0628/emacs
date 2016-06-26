@@ -18,8 +18,8 @@
 (show-paren-mode 1) ; 対応する括弧を光らせる
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 
-;; (require 'smartparens-config)
-;; (smartparens-global-mode)
+(require 'smartparens-config)
+(smartparens-global-mode t)
 ;; (ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
 ;; (ad-activate 'delete-backward-char)
 
@@ -51,7 +51,7 @@
 (set-face-attribute
  'default nil
  :family "Ricty"
- :height 160
+ :height 140
 )
 
 

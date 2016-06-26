@@ -8,6 +8,7 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
+
 ;;; 各ディレクトリにパスを通す
 (defun add-to-load-path (&rest paths)
   (let (path)
