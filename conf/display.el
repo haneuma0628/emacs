@@ -18,10 +18,12 @@
 (show-paren-mode 1) ; 対応する括弧を光らせる
 (setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
 
-;; (require 'smartparens-config)
-;; (smartparens-global-mode)
-;; (ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
-;; (ad-activate 'delete-backward-char)
+;; カッコの自動挿入とか
+(require 'smartparens-config)
+(smartparens-global-mode)
+;; 対応括弧の削除機能の無効化
+(ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
+(ad-activate 'delete-backward-char)
 
 ;; カッコを虹色にシンタックスハイライト
 (require 'rainbow-delimiters)
@@ -51,7 +53,7 @@
 (set-face-attribute
  'default nil
  :family "Ricty"
- :height 160
+ :height 140
 )
 
 
