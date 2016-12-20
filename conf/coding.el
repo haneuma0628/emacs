@@ -91,10 +91,17 @@
   "Hooks for Ruby mode."
   (setq ruby-deep-indent-paren-style nil)
   ;; (smart-paren-mode)
-  (smartparens-mode)
-)
+  (smartparens-mode))
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
+;;; python-mode
+(add-hook 'python-mode-hook
+          (function (lambda ()
+                      (smartparens-mode)
+                      (setq indent-tabs-mode t)
+                      (setq python-indent-offset 8)
+                      (flycheck-mode 1))))
+;; (put 'set-goal-column 'disabled nil);
 
 ;;; csharp-mode
 (require 'csharp-mode)
@@ -122,3 +129,9 @@
 (require 'haskell-mode)
 (add-to-list 'auto-mode-alist'("\\.hs$" . haskell-mode))
 (add-to-list 'auto-mode-alist'("\\.lhs$" . haskell-mode))
+
+
+;;; xml
+(require 'nxml-mode)
+(add-to-list 'auto-mode-alist'("\\.plist$" . nxml-mode))
+(add-to-list 'auto-mode-alist'("\\.xml$" . nxml-mode))

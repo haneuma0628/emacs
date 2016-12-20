@@ -50,3 +50,4 @@
 (depends-on "elnode")
 (depends-on "mongo")
 (depends-on "haskell-mode")
+(depends-on "exec-path-from-shell")

@@ -10,6 +10,7 @@
               "/usr/local/opt/cask"
               "/usr/texbin"
               "/usr/local/texlive/2015/bin/x86_64-darwin"
+              "/Users/hnmxxxx/.pyenv/shims"
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/bin")
               ))
@@ -37,3 +38,7 @@
 ;;; trampの設定
 (require 'tramp)
 (setq tramp-default-method "scpx")
+
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
