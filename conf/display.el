@@ -1,12 +1,8 @@
-;;; Emacsの見た目
-(load-theme 'wombat t)
-(set-frame-parameter (selected-frame) 'alpha '(90 90))
-
-
 ;;; いろいろ
+(load-theme 'wombat t) ; テーマを指定
+(set-frame-parameter (selected-frame) 'alpha '(90 90)) ; ウィンドウを透過
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
-
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
 (setq-default line-spacing 3) ; 行間
 (global-hl-line-mode t) ; 現在行を目立たせる
@@ -54,14 +50,14 @@
  'default nil
  :family "Ricty"
  :height 140
-)
+ )
 
 
-;;; highlight-indentation インデントをいい感じにハイライトしてくれる
-(require 'highlight-indentation)
-(set-face-background 'highlight-indentation-face "#353535")
-(set-face-background 'highlight-indentation-current-column-face "#4c4c4c")
-(add-hook 'prog-mode-hook 'highlight-indentation-mode)
+;;; インデントをハイライト
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(setq highlight-indent-guides-method 'fill)
+(setq highlight-indent-guides-auto-odd-face-perc 10)
+(setq highlight-indent-guides-auto-even-face-perc 5)
 
 
 ;;; nyan-mode
