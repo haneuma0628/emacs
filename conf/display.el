@@ -2,15 +2,17 @@
 (set-face-attribute
  'default nil
  :family "Ricty"
- :height 140
+ :height 130
  )
 
 ;;; いろいろ
-(load-theme 'wombat t) ; テーマを指定
+(load-theme 'wombat t)
 (set-frame-parameter (selected-frame) 'alpha '(90 90)) ; ウィンドウを透過
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
 (scroll-bar-mode -1)
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
 (setq-default line-spacing 3) ; 行間
 (global-hl-line-mode t) ; 現在行を目立たせる
@@ -36,7 +38,7 @@
    for index from 1 to rainbow-delimiters-max-face-count
    do
    (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-    (cl-callf color-saturate-name (face-foreground face) 15))))
+    (cl-callf color-saturate-name (face-foreground face) 30))))
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
 
