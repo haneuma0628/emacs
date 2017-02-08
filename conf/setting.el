@@ -13,10 +13,18 @@
   (exec-path-from-shell-initialize))
 
 
-;;; 言語設定
+;;; 言語
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
 
 
+;;; バックアップとオートセーブ
+(add-to-list 'backup-directory-alist
+      (cons "." "~/.emacs.d/backups/"))
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+
+
 ;;; fix that cannot connect melpa, gnu
-(load-library "url-handlers")
+(load-library "url-handlers"
+)

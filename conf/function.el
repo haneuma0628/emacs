@@ -1,17 +1,4 @@
-;;; キーバインド
-(bind-key "C-j" 'goto-line)
-(bind-key "C-r" 'query-replace)
-(bind-key "C-;" 'comment-or-uncomment-region)
-(bind-key "C-t" 'other-window)
-(bind-key "C-c a" 'align)
-(bind-key "C-<" 'beginning-of-buffer)
-(bind-key "C->" 'end-of-buffer)
-(bind-key "ESC ESC ESC" nil) ; 分割破壊阻止
-(bind-key "\C-x \C-c" nil) ; C-x C-cでemacsをkillしない
-(defalias 'exit 'save-buffers-kill-emacs) ; M-x exitでemacsをkill
-
-
-;;; company-mode(補完)
+;;; 入力補完
 (require 'company)
 (global-company-mode t)
 (setq company-idle-delay 0)
@@ -20,17 +7,18 @@
 (define-key company-active-map (kbd "C-p") 'company-select-previous)
 
 
+;;; 括弧補完
+(require 'smartparens-config)
+(smartparens-global-mode t)
+
+;; 対応括弧の削除機能の無効化
+(ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
+(ad-activate 'delete-backward-char)
+
 ;;; tramp リモートでファイルをもごもごできる
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash")) ; ssh先をbashで開く。hang対策
-
-
-;;; バックアップとオートセーブ
-(add-to-list 'backup-directory-alist
-      (cons "." "~/.emacs.d/backups/"))
-(setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 
 ;;; ag + wgrep

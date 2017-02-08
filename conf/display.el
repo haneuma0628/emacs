@@ -1,8 +1,16 @@
+;;; フォント設定
+(set-face-attribute
+ 'default nil
+ :family "Ricty"
+ :height 140
+ )
+
 ;;; いろいろ
 (load-theme 'wombat t) ; テーマを指定
 (set-frame-parameter (selected-frame) 'alpha '(90 90)) ; ウィンドウを透過
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
+(scroll-bar-mode -1)
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
 (setq-default line-spacing 3) ; 行間
 (global-hl-line-mode t) ; 現在行を目立たせる
@@ -10,30 +18,33 @@
 (setq scroll-step 1) ; 1行ずつスクロール
 
 
-;;; カッコ
-(show-paren-mode 1) ; 対応する括弧を光らせる
-(setq show-paren-style 'mixed) ; ウィンドウ内に収まらないときだけ括弧内も光らせる
+;;; 対の括弧を強調
+(show-paren-mode 1)
+(setq show-paren-style 'mixed)
 
-;; カッコの自動挿入とか
-(require 'smartparens-config)
-(smartparens-global-mode)
-;; 対応括弧の削除機能の無効化
-(ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
-(ad-activate 'delete-backward-char)
 
-;; カッコを虹色にシンタックスハイライト
+;;; カッコを虹色にシンタックスハイライトする
 (require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; 括弧の色を強調
 (require 'cl-lib)
 (require 'color)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(defun rainbow-delimiters-using-bright-colors ()
+(defun rainbow-delimiters-using-stronger-colors ()
   (interactive)
   (cl-loop
    for index from 1 to rainbow-delimiters-max-face-count
    do
    (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-     (cl-callf color-saturate-name (face-foreground face) 16))))
-(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-bright-colors)
+    (cl-callf color-saturate-name (face-foreground face) 15))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
+
+
+;;; インデントの強調
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(setq highlight-indent-guides-method 'fill)
+(setq highlight-indent-guides-auto-odd-face-perc 10)
+(setq highlight-indent-guides-auto-even-face-perc 5)
 
 
 ;;; 行番号の表示
@@ -45,25 +56,16 @@
 (setq linum-format "%3d")
 
 
-;;; フォント設定
-(set-face-attribute
- 'default nil
- :family "Ricty"
- :height 140
- )
-
-
-;;; インデントをハイライト
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(setq highlight-indent-guides-method 'fill)
-(setq highlight-indent-guides-auto-odd-face-perc 10)
-(setq highlight-indent-guides-auto-even-face-perc 5)
-
-
 ;;; nyan-mode
 (require 'nyan-mode)
 (nyan-mode)
 (nyan-start-animation)
+
+
+;;; モードラインをシュッとする
+(require 'powerline)
+(powerline-default-theme)
+
 
 ;;; タブエディタっぽくできる tabber
 (require 'tabbar)

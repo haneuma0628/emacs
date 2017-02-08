@@ -20,9 +20,10 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" ".cask" "my-lisp" "site-lisp")
 
-(load "setting")  ; pathとか設定
-(load "template") ; テンプレートの設定
-(load "function") ; Emacsの機能
-(load "display")  ; 見た目とか
-(load "coding")   ; 各プログラミング言語に対する設定
-(load "edit")     ; texとかevernoteとか
+(load "setting")  ; pathとか
+(load "template") ; テンプレート
+(load "keybind")  ; キーバインド
+(load "function") ; 追加機能
+(load "display")  ; 見た目
+(load "coding")   ; プログラミング言語
+(load "edit")     ; 文書っぽいもの

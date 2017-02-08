@@ -27,15 +27,19 @@
 (depends-on "yasnippet")
 (depends-on "tramp")
 (depends-on "company")
-(depends-on "tabbar")
-(depends-on "rainbow-delimiters")
-(depends-on "highlight-indent-guides")
 (depends-on "ag") ; + brew install ag
 (depends-on "wgrep")
 (depends-on "wgrep-ag")
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
+
+(depends-on "color")
+(depends-on "cl-lib")
+(depends-on "rainbow-delimiters")
+(depends-on "highlight-indent-guides")
+(depends-on "tabbar")
+(depends-on "powerline")
 
 (depends-on "web-mode")
 (depends-on "yatex")
