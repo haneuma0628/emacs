@@ -1,3 +1,6 @@
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;;; php-mode
 (require 'php-mode)
 (add-to-list 'auto-mode-alist'("\\.php$" . php-mode))
@@ -78,14 +81,21 @@
 ;;; yaml-mode
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml.sample$" . yaml-mode))
 
 
 ;;; ruby-mode
+(require 'enh-ruby-mode)
+(add-to-list 'auto-mode-alist'("\\.rb$" . enh-ruby-mode))
+
 (defun my-ruby-mode-hook ()
   "My hooks for ruby-mode"
   (setq ruby-deep-indent-paren-style nil)
+  (setq flycheck-ruby-rubocop-executable "~/.rbenv/shims/rubocop")
+  (setq flycheck-checker 'ruby-rubocop)
   )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+(push 'company-robe company-backends)
 
 
 ;;; python-mode
