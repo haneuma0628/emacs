@@ -3,6 +3,10 @@
   (exec-path-from-shell-initialize))
 
 (dolist (dir (list
+              "/bin"
+              "/sbin"
+              "/usr/local/bin"
+              "/usr/local/sbin"
               "/usr/local/opt/cask"
               "/usr/texbin"
               "/usr/local/texlive/2015/bin/x86_64-darwin"
@@ -13,6 +17,12 @@
 ;;; 環境変数を読む
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+
+;;; rbenv
+(require 'rbenv)
+(global-rbenv-mode)
+(setq rbenv-installation-dir "/usr/local/rbenv")
 
 
 ;;; 言語

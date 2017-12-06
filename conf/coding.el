@@ -1,5 +1,7 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
 
 ;;; php-mode
 (require 'php-mode)
@@ -86,25 +88,43 @@
 
 ;;; ruby-mode
 (require 'enh-ruby-mode)
+(require 'robe)
+;; (add-to-list 'auto-mode-alist'("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist'("\\.rb$" . enh-ruby-mode))
 
 (defun my-ruby-mode-hook ()
   "My hooks for ruby-mode"
-  (setq ruby-deep-indent-paren-style nil)
-  (setq flycheck-ruby-rubocop-executable "~/.rbenv/shims/rubocop")
-  (setq flycheck-checker 'ruby-rubocop)
+  (setq enh-ruby-deep-indent-paren nil)
+  (setq flycheck-rubocoprc ".rubocop.yml")
+  (setq flycheck-disabled-checkers '(ruby-rubylint))
+  ;; (robe-mode)
   )
-(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+(add-hook 'enh-ruby-mode-hook 'my-ruby-mode-hook)
 (push 'company-robe company-backends)
 
 
 ;;; python-mode
+(require 'python)
+(require 'jedi-core)
+(require 'py-autopep8)
+
 (defun my-python-mode-hook ()
   "My hooks for python-mode"
   (setq indent-tabs-mode nil)
   (setq python-indent-offset 4)
+  'jedi:setup
   )
 (add-hook 'python-mode 'my-python-mode-hook)
+
+;; jedi(on company)
+(setq jedi:complete-on-dot t)
+(setq jedi:use-shortcuts t)
+(add-to-list 'company-backends 'company-jedi)
+
+;; autopep8
+(define-key python-mode-map (kbd "C-c l") 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(setq py-autopep8-options '("--max-line-length=200"))
 
 
 ;;; csharp-mode
@@ -143,3 +163,8 @@
 
 ;;; lisp
 (add-to-list 'auto-mode-alist'("Cask" . lisp-mode))
+
+
+;;; dockerfile
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
