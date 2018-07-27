@@ -45,6 +45,7 @@
 (depends-on "tabbar")
 (depends-on "powerline")
 (depends-on "neotree")
+(depends-on "yspel" :git "https://github.com/yama-natuki/yspel")
 
 (depends-on "web-mode")
 (depends-on "yatex")
