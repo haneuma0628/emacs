@@ -81,11 +81,20 @@
 
 
 ;;; ruby-mode
+(require 'enh-ruby-mode)
+(require 'robe)
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+
 (defun my-ruby-mode-hook ()
   "My hooks for ruby-mode"
-  (setq ruby-deep-indent-paren-style nil)
+  (setq enh-ruby-deep-indent-paren nil)
+  (flycheck-mode t)
+  (robe-mode t)
   )
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
 
 
 ;;; python-mode

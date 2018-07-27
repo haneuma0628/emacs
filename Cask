@@ -33,6 +33,8 @@
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
+(depends-on "rubocop")
+(depends-on "robe")
 
 (depends-on "color")
 (depends-on "cl-lib")
@@ -52,3 +54,4 @@
 (depends-on "markdown-mode")
 (depends-on "haskell-mode")
 (depends-on "fish-mode")
+(depends-on "enh-ruby-mode")
