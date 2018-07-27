@@ -1,3 +1,20 @@
+;;; yspel
+(require 'yspel)
+
+;;; aspell
+; run with Japanese
+(setq-default ispell-program-name "aspell")
+(eval-after-load "ispell"
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+
+
+;;; flyspell
+(eval-after-load "flyspell"
+  '(progn
+     (bind-key "C-;" nil flyspell-mode-map)
+     ))
+
+
 ;;; yatex-mode
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (modify-coding-system-alist 'file "\\.tex\\'" 'utf-8)
@@ -17,8 +34,9 @@
 ;; (setq YaTeX-kanji-code 4)
 (add-hook 'yatex-mode-hook
           '(lambda ()
+             (flyspell-mode)
              (setq auto-fill-function nill)
-	     (set-key "\C-cg" 'goto-line)
+             (bind-key "C-cg" 'goto-line)
              (auto-fill-mode -1)))
 
 ;; バッファ全体の句読点と読点をコンマとピリオドに変換
@@ -57,6 +75,8 @@
 
 ;;; markdown-mode
 (require 'markdown-mode)
+(setq auto-mode-alist
+      (append '(("\\.md$" . markdown-mode)) auto-mode-alist))
 
 (defun eww-open-file-other-window (file)
   (if (one-window-p)(split-window))
@@ -71,3 +91,4 @@
   (eww-open-file-other-window "/tmp/grip.html"))
 
 (define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-eww)
+
