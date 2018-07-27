@@ -33,8 +33,10 @@
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
-(depends-on "rubocop")
+(depends-on "rbenv")
+(depends-on "inf-ruby")
 (depends-on "robe")
+(depends-on "rubocop")
 
 (depends-on "color")
 (depends-on "cl-lib")
@@ -42,6 +44,7 @@
 (depends-on "highlight-indent-guides")
 (depends-on "tabbar")
 (depends-on "powerline")
+(depends-on "neotree")
 
 (depends-on "web-mode")
 (depends-on "yatex")
@@ -55,3 +58,7 @@
 (depends-on "haskell-mode")
 (depends-on "fish-mode")
 (depends-on "enh-ruby-mode")
+(depends-on "rspec-mode")
+(depends-on "dockerfile-mode")
+(depends-on "company-jedi")
+(depends-on "py-autopep8")

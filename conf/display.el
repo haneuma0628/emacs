@@ -116,3 +116,8 @@
 ;; キーに割り当てる
 (global-set-key [C-tab] 'tabbar-forward-tab)
 (global-set-key [C-S-tab] 'tabbar-backward-tab)
+
+
+;;; ディレクトリツリーを表示
+(setq neo-show-hidden-files t)
+(global-set-key (kbd "C-x t") 'neotree-toggle)

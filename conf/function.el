@@ -1,8 +1,9 @@
 ;;; 入力補完
 (require 'company)
-(global-company-mode t)
+(add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 2)
+(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
 (define-key company-active-map (kbd "C-n") 'company-select-next)
 (define-key company-active-map (kbd "C-p") 'company-select-previous)
 
@@ -29,11 +30,6 @@
 ;; 対応括弧の削除機能の無効化
 (ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
 (ad-activate 'delete-backward-char)
-
-;;; tramp リモートでファイルをもごもごできる
-(require 'tramp)
-(setq tramp-default-method "ssh")
-(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash")) ; ssh先をbashで開く。hang対策
 
 
 ;;; ag + wgrep
