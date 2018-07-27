@@ -62,3 +62,6 @@
 (depends-on "dockerfile-mode")
 (depends-on "company-jedi")
 (depends-on "py-autopep8")
+(depends-on "go-mode")
+(depends-on "rust-mode")
+(depends-on "flycheck-rust")

@@ -127,6 +127,15 @@
 (define-key python-mode-map (kbd "C-c l") 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options '("--max-line-length=200"))
+;;; rust
+(require 'rust-mode)
+(add-to-list 'auto-mode-alist'("\\.rs" . rust-mode))
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(defun my-rust-mode-hook ()
+  "My hooks for rust-mode"
+  (flycheck-mode t)
+  )
+(add-hook 'rust-mode-hook 'my-rust-mode-hook)
 
 
 ;;; csharp-mode
@@ -155,6 +164,11 @@
 (require 'haskell-mode)
 (add-to-list 'auto-mode-alist'("\\.hs$" . haskell-mode))
 (add-to-list 'auto-mode-alist'("\\.lhs$" . haskell-mode))
+
+
+;;; golang
+(require 'go-mode)
+(add-to-list 'auto-mode-alist'("\\.go$" . go-mode))
 
 
 ;;; xml
