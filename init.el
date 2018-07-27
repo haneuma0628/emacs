@@ -1,19 +1,3 @@
-;;; パッケージ管理
-;; Cask
-(require 'cask "/usr/local/opt/cask/cask.el")
-(cask-initialize)
-
-;; pallet
-(require 'pallet)
-(pallet-mode t)
-
-;; package
-(require 'package)
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-
-
-;;; 各ディレクトリにパスを通す
 (defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
@@ -24,10 +8,12 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" ".cask" "my-lisp" "site-lisp")
 
+(load "package")
 (load "setting")  ; pathとか
 (load "template") ; テンプレート
 (load "keybind")  ; キーバインド
 (load "function") ; 追加機能
 (load "display")  ; 見た目
+(load "tabbar")
 (load "coding")   ; プログラミング言語
 (load "edit")     ; 文書っぽいもの
