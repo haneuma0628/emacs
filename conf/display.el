@@ -1,8 +1,9 @@
 ;;; フォント設定
 (set-face-attribute
  'default nil
- :family "Ricty"
- :height 130
+ :family "Fira Code"
+ :weight 'light
+ :height 120
  )
 
 ;;; いろいろ
