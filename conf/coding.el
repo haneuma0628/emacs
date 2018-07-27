@@ -83,24 +83,26 @@
 ;;; yaml-mode
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yml.sample$" . yaml-mode))
 
 
 ;;; ruby-mode
 (require 'enh-ruby-mode)
 (require 'robe)
-;; (add-to-list 'auto-mode-alist'("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist'("\\.rb$" . enh-ruby-mode))
 
 (defun my-ruby-mode-hook ()
   "My hooks for ruby-mode"
+  (flycheck-mode t)
+  (robe-mode t)
   (setq enh-ruby-deep-indent-paren nil)
   (setq flycheck-rubocoprc ".rubocop.yml")
   (setq flycheck-disabled-checkers '(ruby-rubylint))
-  ;; (robe-mode)
   )
 (add-hook 'enh-ruby-mode-hook 'my-ruby-mode-hook)
 (push 'company-robe company-backends)
+
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
 
 
 ;;; python-mode
