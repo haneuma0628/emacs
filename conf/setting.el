@@ -1,4 +1,4 @@
-;;; pathを通す
+;;; add to path
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
@@ -14,7 +14,7 @@
               (expand-file-name "~/.emacs.d/bin"))))
 
 
-;;; 環境変数を読む
+;;; Environment variable
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
@@ -25,24 +25,23 @@
 (setq rbenv-installation-dir "/usr/local/rbenv")
 
 
-;;; 言語
+;;; Language and character code
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
 
 
-;;; バックアップとオートセーブ
+;;; Backup and auto-save
 (add-to-list 'backup-directory-alist
       (cons "." "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
       `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 
-;;; fix that cannot connect melpa, gnu
-(load-library "url-handlers"
-)
+;;; fix problm that cannot connect melpa, gnu
+(load-library "url-handlers")
 
 
-;;; tramp リモートでファイルをもごもごできる
+;;; tramp
 (require 'tramp)
-(setq tramp-default-method "ssh")
+(setq tramp-default-method "sshx")
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash")) ; hang対策のため、ssh先をbashで開く
