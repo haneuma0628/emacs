@@ -8,12 +8,12 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" ".cask" "my-lisp" "site-lisp")
 
-(load "package")
+(load "package")  ; package manager
 (load "setting")  ; pathとか
 (load "template") ; テンプレート
 (load "keybind")  ; キーバインド
-(load "function") ; 追加機能
+(load "function")  ; 追加機能
 (load "display")  ; 見た目
-(load "tabbar")
-(load "coding")   ; プログラミング言語
-(load "edit")     ; 文書っぽいもの
+(load "tab")  ; tabbar
+(load "coding")  ; プログラミング言語
+(load "edit")  ; 文書っぽいもの
