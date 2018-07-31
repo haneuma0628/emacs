@@ -66,3 +66,5 @@
 (depends-on "go-mode")
 (depends-on "rust-mode")
 (depends-on "flycheck-rust")
+(depends-on "js-auto-format-mode")
+(depends-on "add-node-modules-path")

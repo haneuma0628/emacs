@@ -41,20 +41,28 @@
 (require 'fish-mode)
 
 
-;;; js2-mode
+;;; JavaScript
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq-default js2-basic-offset 2
+              js-switch-indent-offset 2
               tab-width 2
               indent-tabs-mode nil)
 (put 'upcase-region 'disabled nil)
+
+(add-hook 'js2-mode-hook #'js-auto-format-mode)
+(add-hook 'js2-mode-hook #'add-node-modules-path)
+
+;; disable jshint since we prefer eslint checking
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
 
 
 ;;; web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js$"        . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
