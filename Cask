@@ -1,7 +1,7 @@
-(source gnu)
 (source melpa)
 (source marmalade)
 (source org)
+(source gnu)
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -66,15 +66,25 @@
 ;; Python
 (depends-on "company-jedi")
 (depends-on "py-autopep8")
+(depends-on "elpy")
+(depends-on "flymake-python-pyflakes")
 
-;; SQL
-(depends-on "sql-indent")
+;; JavaScript
+(depends-on "js-auto-format-mode")
+(depends-on "add-node-modules-path")
+(depends-on "tern")
+(depends-on "tern-auto-complete")
+
+;; Rust
+(depends-on "racer")
 
 ;; tide
 (depends-on "tide")
 
+;; git
 (depends-on "git-gutter+")
 
+;; display
 (depends-on "color")
 (depends-on "cl-lib")
 (depends-on "rainbow-delimiters")
@@ -82,9 +92,4 @@
 (depends-on "tabbar")
 (depends-on "powerline")
 (depends-on "neotree")
-
-(depends-on "racer")
-(depends-on "js-auto-format-mode")
-(depends-on "add-node-modules-path")
-
-(depends-on "sql-indent")
+(depends-on "iflipb")
