@@ -7,6 +7,10 @@
 (require 'cask "/usr/local/opt/cask/cask.el")
 (cask-initialize)
 
+;; pallet
+(require 'pallet)
+(pallet-mode t)
+
 ;; package
 (require 'package)
 (package-initialize)

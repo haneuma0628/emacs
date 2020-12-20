@@ -14,7 +14,6 @@
 (depends-on "flycheck-cask")
 (depends-on "flycheck-rust")
 (depends-on "jedi")
-
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "magit")
@@ -37,16 +36,15 @@
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
+(depends-on "yspel" :git "https://github.com/yama-natuki/yspel")
+(depends-on "yatex")
 
 ;; (lang)-mode
 (depends-on "web-mode")
 (depends-on "php-mode")
-(depends-on "js2-mode")
-(depends-on "enh-ruby-mode")
 (depends-on "csharp-mode")
 (depends-on "haskell-mode")
 (depends-on "scala-mode")
-(depends-on "rust-mode")
 (depends-on "fish-mode")
 (depends-on "yaml-mode")
 (depends-on "haml-mode")
@@ -57,26 +55,32 @@
 (depends-on "hive")
 (depends-on "org-plus-contrib")
 
+;; JavaScript
+(depends-on "js2-mode")
+(depends-on "js-auto-format-mode")
+
 ;; Ruby
 (depends-on "rbenv")
 (depends-on "inf-ruby")
 (depends-on "robe")
 (depends-on "rubocop")
+(depends-on "enh-ruby-mode")
 
 ;; Python
 (depends-on "company-jedi")
 (depends-on "py-autopep8")
 (depends-on "elpy")
 (depends-on "flymake-python-pyflakes")
-
-;; JavaScript
-(depends-on "js-auto-format-mode")
 (depends-on "add-node-modules-path")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
 
 ;; Rust
 (depends-on "racer")
+(depends-on "rust-mode")
+
+;; Go
+(depends-on "go-mode")
 
 ;; tide
 (depends-on "tide")

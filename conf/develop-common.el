@@ -28,6 +28,7 @@
 (require 'nxml-mode)
 (require 'dockerfile-mode)
 (require 'mongo)
+(require 'go-mode)
 
 ;; add-to-list
 (add-to-list 'auto-mode-alist'("\\.cs$" . csharp-mode))
@@ -42,6 +43,7 @@
 (add-to-list 'auto-mode-alist'("\\.plist$" . nxml-mode))
 (add-to-list 'auto-mode-alist'("\\.xml$" . nxml-mode))
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+(add-to-list 'auto-mode-alist'("\\.go$" . go-mode))
 
 (provide 'develop-common)
 ;;; develop-common.el ends here
