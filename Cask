@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
 (source marmalade)
+(source org)
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -11,6 +12,9 @@
 (depends-on "f")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
+(depends-on "flycheck-rust")
+(depends-on "jedi")
+
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "magit")
@@ -33,10 +37,43 @@
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
+
+;; (lang)-mode
+(depends-on "web-mode")
+(depends-on "php-mode")
+(depends-on "js2-mode")
+(depends-on "enh-ruby-mode")
+(depends-on "csharp-mode")
+(depends-on "haskell-mode")
+(depends-on "scala-mode")
+(depends-on "rust-mode")
+(depends-on "fish-mode")
+(depends-on "yaml-mode")
+(depends-on "haml-mode")
+(depends-on "markdown-mode")
+(depends-on "rspec-mode")
+(depends-on "jinja2-mode")
+(depends-on "dockerfile-mode")
+(depends-on "hive")
+(depends-on "org-plus-contrib")
+
+;; Ruby
 (depends-on "rbenv")
 (depends-on "inf-ruby")
 (depends-on "robe")
 (depends-on "rubocop")
+
+;; Python
+(depends-on "company-jedi")
+(depends-on "py-autopep8")
+
+;; SQL
+(depends-on "sql-indent")
+
+;; tide
+(depends-on "tide")
+
+(depends-on "git-gutter+")
 
 (depends-on "color")
 (depends-on "cl-lib")
@@ -45,26 +82,9 @@
 (depends-on "tabbar")
 (depends-on "powerline")
 (depends-on "neotree")
-(depends-on "yspel" :git "https://github.com/yama-natuki/yspel")
 
-(depends-on "web-mode")
-(depends-on "yatex")
-(depends-on "csharp-mode")
-(depends-on "scala-mode")
-(depends-on "php-mode")
-(depends-on "js2-mode")
-(depends-on "yaml-mode")
-(depends-on "haml-mode")
-(depends-on "markdown-mode")
-(depends-on "haskell-mode")
-(depends-on "fish-mode")
-(depends-on "enh-ruby-mode")
-(depends-on "rspec-mode")
-(depends-on "dockerfile-mode")
-(depends-on "company-jedi")
-(depends-on "py-autopep8")
-(depends-on "go-mode")
-(depends-on "rust-mode")
-(depends-on "flycheck-rust")
+(depends-on "racer")
 (depends-on "js-auto-format-mode")
 (depends-on "add-node-modules-path")
+
+(depends-on "sql-indent")

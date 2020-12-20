@@ -1,4 +1,17 @@
-;;; フォント設定
+;;; package --- Summary:
+;;; Commentary:
+;;; 表示まわりの設定いろいろ
+;; - font
+;; - theme
+;; - 細かい設定
+;; - show-paren-mode
+;; - rainbow-delimiters
+;; - linum
+;; - powerline
+;; - iflipb
+;; - neotree
+;;; Code:
+;; font
 (set-face-attribute
  'default nil
  :family "Fira Code"
@@ -6,8 +19,10 @@
  :height 120
  )
 
-;;; いろいろ
-(load-theme 'wombat t)
+;; themes
+(load-theme 'creamsody t)
+
+;; いろいろ
 (set-frame-parameter (selected-frame) 'alpha '(90 90)) ; ウィンドウを透過
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
@@ -18,39 +33,10 @@
 (setq-default line-spacing 3) ; 行間
 (global-hl-line-mode t) ; 現在行を目立たせる
 (blink-cursor-mode 0) ; カーソルの点滅を止める
-(setq scroll-step 1) ; 1行ずつスクロール
+(setq scroll-step 1) ; 1行ずつスクロールva
+(require 'all-the-icons)
 
-
-;;; 対の括弧を強調
-(show-paren-mode 1)
-(setq show-paren-style 'mixed)
-
-
-;;; カッコを虹色にシンタックスハイライトする
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;; 括弧の色を強調
-(require 'cl-lib)
-(require 'color)
-(defun rainbow-delimiters-using-stronger-colors ()
-  (interactive)
-  (cl-loop
-   for index from 1 to rainbow-delimiters-max-face-count
-   do
-   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-    (cl-callf color-saturate-name (face-foreground face) 30))))
-(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
-
-
-;;; インデントの強調
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(setq highlight-indent-guides-method 'fill)
-(setq highlight-indent-guides-auto-odd-face-perc 10)
-(setq highlight-indent-guides-auto-even-face-perc 5)
-
-
-;;; 行番号の表示
+;; 行番号の表示
 (require 'linum)
 (global-linum-mode t)
 (set-face-attribute 'linum nil
@@ -58,67 +44,24 @@
                     :height 0.9)
 (setq linum-format "%3d")
 
-
-;;; nyan-mode
-(require 'nyan-mode)
-(nyan-mode)
-(nyan-start-animation)
-
-
-;;; モードラインをシュッとする
+;; モードラインをシュッとする
 (require 'powerline)
 (powerline-default-theme)
 
+;; iflipb
+(require 'iflipb)
+(setq iflipb-ignore-buffers (list "^[*]" "^magit" "]$" "^\*Flymake" "^\*epc" "\*Compile"))
+(setq iflipb-wrap-around t)
+(bind-key "C-<tab>" 'iflipb-next-buffer)
+(bind-key "C-<S-tab>" 'iflipb-previous-buffer)
 
-;;; タブエディタっぽくできる tabber
-(require 'tabbar)
-(tabbar-mode 1)
-
-;; グループ化しない
-(setq tabbar-buffer-groups-function nil)
-
-;; 左に表示されるボタンを無効化
-(dolist (btn '(tabbar-buffer-home-button
-               tabbar-scroll-left-button
-               tabbar-scroll-right-button))
-  (set btn (cons (cons "" nil)
-                 (cons "" nil))))
-
-;; タブ同士の間隔
-(setq tabbar-separator '(1.5))
-
-;; 外観変更
-(set-face-attribute
- 'tabbar-default nil
- :family (face-attribute 'default :family)
- :background (face-attribute 'mode-line-inactive :background)
- :height 0.9)
-(set-face-attribute
- 'tabbar-unselected nil
- :background (face-attribute 'mode-line-inactive :background)
- :foreground (face-attribute 'mode-line-inactive :foreground)
- :box nil)
-(set-face-attribute
- 'tabbar-selected nil
- :background (face-attribute 'mode-line :background)
- :foreground (face-attribute 'mode-line :foreground)
- :box nil)
-(defun get-color-helper (face attribute n diff)
-  (format "%x" (max 0 (min (car (color-values "white"))
-                           (+ diff (nth n (color-values (face-attribute face attribute))))))))
-(defun create-color-helper (face attribute r g b)
-  (concat "#"
-          (get-color-helper face attribute 0 r)
-          (get-color-helper face attribute 1 g)
-          (get-color-helper face attribute 2 b)))
-;; usage
-(create-color-helper 'mode-line :foreground 10 -20 30)
-
-;; キーに割り当てる
-(global-set-key [C-tab] 'tabbar-forward-tab)
-(global-set-key [C-S-tab] 'tabbar-backward-tab)
-
-
-;;; ディレクトリツリーを表示
-(setq neo-show-hidden-files t)
+;; ディレクトリツリーを表示
+(require 'neotree)
 (global-set-key (kbd "C-x t") 'neotree-toggle)
+(setq neo-show-hidden-files t)
+(setq neo-window-fixed-size nil)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+
+(provide 'display)
+;;; display.el ends here
