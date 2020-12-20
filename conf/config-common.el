@@ -1,4 +1,8 @@
-;;; pathを通す
+;;; config-common.el ---                             -*- lexical-binding: t; -*-
+;;; Commentary:
+;;
+;;; Code:
+;; pathを通す
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
@@ -8,41 +12,35 @@
               "/usr/local/bin"
               "/usr/local/sbin"
               "/usr/local/opt/cask"
-              "/usr/texbin"
-              "/usr/local/texlive/2015/bin/x86_64-darwin"
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/bin"))))
 
-
-;;; 環境変数を読む
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
-
-;;; rbenv
+;; rbenv
 (require 'rbenv)
 (global-rbenv-mode)
 (setq rbenv-installation-dir "/usr/local/rbenv")
 
-
-;;; 言語
+;; 言語
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
 
-
-;;; バックアップとオートセーブ
+;; バックアップとオートセーブ
 (add-to-list 'backup-directory-alist
       (cons "." "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
       `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
-
-;;; fix that cannot connect melpa, gnu
+;; fix that cannot connect melpa, gnu
 (load-library "url-handlers"
 )
 
-
-;;; tramp リモートでファイルをもごもごできる
+;; tramp リモートでファイルをもごもごできる
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash")) ; hang対策のため、ssh先をbashで開く
+
+;; elnode - An evented IO webserver in Emacs Lisp.
+(require 'elnode)
+
+(provide 'config-common)
+;;; config-common.el ends here

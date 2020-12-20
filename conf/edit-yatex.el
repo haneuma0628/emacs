@@ -1,21 +1,8 @@
-;;; yspel
-(require 'yspel)
-
-;;; aspell
-; run with Japanese
-(setq-default ispell-program-name "aspell")
-(eval-after-load "ispell"
-  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
-
-
-;;; flyspell
-(eval-after-load "flyspell"
-  '(progn
-     (bind-key "C-;" nil flyspell-mode-map)
-     ))
-
-
-;;; yatex-mode
+;;; edit-yatex.el ---                                  -*- lexical-binding: t; -*-
+;;; Commentary:
+;;
+;;; Code:
+;; yatex-mode
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (modify-coding-system-alist 'file "\\.tex\\'" 'utf-8)
 (setq auto-mode-alist
@@ -31,7 +18,7 @@
 (setq bibtex-command "pbibtex")
 (setq dviprint-command-format "dvipdfmx")
 (setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8")
-;; (setq YaTeX-kanji-code 4)
+; (setq YaTeX-kanji-code 4)
 (add-hook 'yatex-mode-hook
           '(lambda ()
              (flyspell-mode)
@@ -39,14 +26,14 @@
              (bind-key "C-cg" 'goto-line)
              (auto-fill-mode -1)))
 
-;; バッファ全体の句読点と読点をコンマとピリオドに変換
+; バッファ全体の句読点と読点をコンマとピリオドに変換
 (defun replace-commaperiod-buffer ()
   (interactive "r")
   (save-excursion
     (replace-string "、" "，" nil (point-min) (point-max))
     (replace-string "。" "．" nil (point-min) (point-max))))
 
-;; 選択範囲内の全角英数字を半角英数字に変換
+; 選択範囲内の全角英数字を半角英数字に変換
 (defun hankaku-eisuu-region (start end)
   (interactive "r")
   (while (string-match
@@ -58,20 +45,24 @@
        (+ start (match-end 0))
        ))))
 
-;; バッファ全体の全角英数字を半角英数字に変換
+; バッファ全体の全角英数字を半角英数字に変換
 (defun hankaku-eisuu-buffer ()
   (interactive)
   (hankaku-eisuu-region (point-min) (point-max)))
 
-;; YaTeXモードの時にのみ動作させる用に条件分岐
+; YaTeXモードの時にのみ動作させる用に条件分岐
 (defun replace-commaperiod-before-save-if-needed ()
   (when (memq major-mode
               '(yatex-mode))
     (replace-commaperiod-buffer)(hankaku-eisuu-buffer)))
 
-;; 保存前フックに追加
+; 保存前フックに追加
 (add-hook 'before-save-hook 'replace-commaperiod-before-save-if-needed)
 
+<<<<<<< HEAD:conf/edit-yatex.el
+(provide 'edit-yatex)
+;;; edit-yatex.el ends here
+=======
 
 ;;; markdown-mode
 (require 'markdown-mode)
@@ -92,3 +83,4 @@
 
 (define-key markdown-mode-map (kbd "\C-c c") 'markdown-render-eww)
 
+>>>>>>> master:conf/edit.el

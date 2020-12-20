@@ -1,4 +1,7 @@
-;;; 入力補完
+;;; config-company.el ---                            -*- lexical-binding: t; -*-
+;;; Commentary:
+;;
+;;; Code:
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0)
@@ -22,33 +25,5 @@
 (set-face-attribute 'company-scrollbar-bg nil
                     :background "gray40")
 
-
-;;; 括弧補完
-(require 'smartparens-config)
-(smartparens-global-mode t)
-
-;; 対応括弧の削除機能の無効化
-(ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
-(ad-activate 'delete-backward-char)
-
-
-;;; ag + wgrep
-;; ag
-(require 'ag)
-(setq default-process-coding-system 'utf-8-unix) ; ag 検索結果のエンコード指定
-(setq ag-highlight-search t) ; 検索キーワードをハイライト
-(setq ag-reuse-buffers t) ; 検索用バッファを使い回す (検索ごとに新バッファを作らない)
-
-;; wgrep
-(add-hook 'ag-mode-hook '(lambda ()
-                           (require 'wgrep-ag)
-                           (setq wgrep-auto-save-buffer t) ; 編集完了と同時に保存
-                           (setq wgrep-enable-key "r") ; "r" キーで編集モードに
-                           (wgrep-ag-setup)))
-
-
-;;; elnode
-(require 'elnode)
-
-;;; mongo
-(require 'mongo)
+(provide 'config-company)
+;;; config-company.el ends here
