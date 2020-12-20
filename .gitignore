@@ -6,6 +6,7 @@
 /eshell
 /site-lisp
 .cask
+/elpa
 /url
 /backups
 /my-lisp
@@ -14,5 +15,6 @@ init.elc
 tramp
 ac-comphist.dat
 kkcrc
+network-security.data
 
 .python-environments
