@@ -18,6 +18,12 @@
 (add-hook 'js2-mode-hook #'js-auto-format-mode)
 (add-hook 'js2-mode-hook #'add-node-modules-path)
 
+;; for jQuery
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
 ;; for nodejs
 (setq js2-include-node-externs t)
 

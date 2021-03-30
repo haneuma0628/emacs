@@ -58,6 +58,8 @@
 ;; JavaScript
 (depends-on "js2-mode")
 (depends-on "js-auto-format-mode")
+(depends-on "tern")
+(depends-on "tern-auto-complete")
 
 ;; Ruby
 (depends-on "rbenv")
