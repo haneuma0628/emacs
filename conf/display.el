@@ -23,7 +23,7 @@
 (load-theme 'creamsody t)
 
 ;; いろいろ
-(set-frame-parameter (selected-frame) 'alpha '(90 90)) ; ウィンドウを透過
+;; (set-frame-parameter (selected-frame) 'alpha '(90 90)) ; ウィンドウを透過
 (menu-bar-mode -1) ; メニューバーを消す
 (tool-bar-mode -1) ; ツールバーを消す
 (scroll-bar-mode -1)
@@ -31,7 +31,6 @@
 (setq initial-scratch-message nil)
 (setq-default show-trailing-whitespace t) ; 文末の空白を表示
 (setq-default line-spacing 3) ; 行間
-(global-hl-line-mode t) ; 現在行を目立たせる
 (blink-cursor-mode 0) ; カーソルの点滅を止める
 (setq scroll-step 1) ; 1行ずつスクロールva
 (require 'all-the-icons)
@@ -43,6 +42,10 @@
                     :foreground "#125f5f"
                     :height 0.9)
 (setq linum-format "%3d")
+; linum-mode の軽量化
+(setq linum-delay t)
+(defadvice linum-schedule (around my-linum-schedule () activate)
+  (run-with-idle-timer 0.2 nil #'linum-update-current))
 
 ;; モードラインをシュッとする
 (require 'powerline)

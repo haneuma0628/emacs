@@ -20,6 +20,7 @@
   (setq web-mode-markup-indent-offset 4)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
+  (setq display-line-numbers-type nil)
   )
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 

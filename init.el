@@ -27,11 +27,14 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" ".cask" "site-lisp")
 
+(setq auto-window-vscroll nil)
+
 ; 各種設定(未分類)
 (load "config-common")
 (load "config-company")
 (load "config-parens")
 (load "config-search")
+(load "config-indent")
 ; テンプレート
 (load "template")
 ; キーバインド
