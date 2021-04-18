@@ -40,6 +40,7 @@
 (load "keybind")
 ; 見た目
 (load "display")
+(load "display-doom")
 ; for develop
 (load "develop-common")
 (load "develop-php")

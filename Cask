@@ -95,7 +95,14 @@
 (depends-on "cl-lib")
 (depends-on "rainbow-delimiters")
 (depends-on "highlight-indent-guides")
-(depends-on "tabbar")
 (depends-on "powerline")
 (depends-on "neotree")
 (depends-on "iflipb")
+
+;; doom-family
+(depends-on "doom-themes")
+(depends-on "centaur-tabs")
+(depends-on "doom-modeline")
+
+;; sql
+(depends-on "sql-indent")
