@@ -65,6 +65,9 @@
 (setq neo-window-fixed-size nil)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
+;; nyan-mode
+(require 'nyan-mode)
+(nyan-mode 1)
 
 (provide 'display)
 ;;; display.el ends here
