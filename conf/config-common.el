@@ -31,8 +31,7 @@
       `((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;; fix that cannot connect melpa, gnu
-(load-library "url-handlers"
-)
+(load-library "url-handlers")
 
 ;; tramp リモートでファイルをもごもごできる
 (require 'tramp)
@@ -44,6 +43,8 @@
 
 ;; ビープ音を鳴らさない
 (setq ring-bell-function 'ignore)
+
+(setq display-warning-minimum-level :error)
 
 (provide 'config-common)
 ;;; config-common.el ends here
