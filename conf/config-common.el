@@ -42,5 +42,8 @@
 ;; elnode - An evented IO webserver in Emacs Lisp.
 (require 'elnode)
 
+;; ビープ音を鳴らさない
+(setq ring-bell-function 'ignore)
+
 (provide 'config-common)
 ;;; config-common.el ends here
