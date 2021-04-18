@@ -13,7 +13,17 @@
 
 ;; package
 (require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+;; use-package
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (add-to-list 'load-path "<path where use-package is installed>")
+  (require 'use-package))
+
+;; refs https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;;; 各ディレクトリにパスを通す
 (defun add-to-load-path (&rest paths)
