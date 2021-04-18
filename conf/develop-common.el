@@ -45,5 +45,9 @@
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (add-to-list 'auto-mode-alist'("\\.go$" . go-mode))
 
+;; eldoc
+(use-package eldoc-mode
+  :hook racer-mode)
+
 (provide 'develop-common)
 ;;; develop-common.el ends here
