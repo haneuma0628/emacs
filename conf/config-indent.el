@@ -3,11 +3,12 @@
 ;;
 ;;; Code:
 ;; インデントを目立たせる
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-
-(setq highlight-indent-guides-method 'fill)
-(setq highlight-indent-guides-auto-odd-face-perc 10)
-(setq highlight-indent-guides-auto-even-face-perc 5)
+(use-package highlight-indent-guides-mode
+  :hook prog-mode
+  :init
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-auto-odd-face-perc 10)
+  (setq highlight-indent-guides-auto-even-face-perc 5))
 
 (provide 'config-indent)
 ;;; config-indent.el ends here
