@@ -17,7 +17,6 @@
 (setenv "PYTHONPATH" (shell-command-to-string "$SHELL --login -c 'echo -n $PYTHONPATH'"))
 
 ; elpy
-(package-initialize)
 (elpy-enable)
 
 ; jedi(on company)

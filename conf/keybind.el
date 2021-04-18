@@ -17,5 +17,9 @@
 (bind-key "\C-x \C-c" nil) ; C-x C-cでemacsをkillしない
 (defalias 'exit 'save-buffers-kill-emacs) ; M-x exitでemacsをkill
 
+;; ⌥キーを Meta キーとして利用する
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'meta))
+
 (provide 'keybind)
 ;;; keybind.el ends here
