@@ -36,7 +36,6 @@
 (depends-on "annotate")
 (depends-on "elnode")
 (depends-on "mongo")
-(depends-on "yspel" :git "https://github.com/yama-natuki/yspel")
 (depends-on "yatex")
 
 ;; (lang)-mode

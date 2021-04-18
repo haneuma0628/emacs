@@ -3,9 +3,6 @@
 ;;
 ;;; Code:
 
-;; yspel
-(require 'yspel)
-
 ;; aspell
 ; run with Japanese
 (setq-default ispell-program-name "aspell")
