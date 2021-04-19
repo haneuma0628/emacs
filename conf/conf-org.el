@@ -43,4 +43,4 @@
   (add-hook 'org-mode-hook 'turn-on-font-lock))
 
 (provide 'edit-org)
-;;; edit-org.el ends here
+;;; conf-org.el ends here
