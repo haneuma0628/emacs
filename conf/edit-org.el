@@ -25,7 +25,7 @@
 		  ))
   ;; TODO 管理
   (setq org-todo-keywords
-		'((sequence "TODO(t)" "WIP(w)" "IN_REVIEW(r)" "|" "DONE(d)" "SOMEDAY(s)" "CANCEL(c)")))
+		'((sequence "TODO(t)" "WIP(w)" "|" "DONE(d)" "SOMEDAY(s)" "CANCEL(c)")))
   ;; org-agenda の対象となるファイル
   (setq org-agenda-files (list "~/org/todo.org"))
   :config
