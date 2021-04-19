@@ -4,50 +4,53 @@
 
 ;;; Code:
 
-;; flycheck
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+;; common
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; set [] as parenthesis
+;;; set [] as parenthesis
 (modify-syntax-entry ?\[ "(]" lisp-mode-syntax-table)
 (modify-syntax-entry ?\] ")[" lisp-mode-syntax-table)
 
+;; flycheck
+(use-package flycheck
+  :hook (after-init . global-flycheck-mode)
+  :config
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
 ;; color
-(require 'font-lock)
-(global-font-lock-mode t)
-
-;; require
-(require 'fish-mode)
-(require 'scala-mode)
-(require 'csharp-mode)
-(require 'haskell-mode)
-(require 'yaml-mode)
-(require 'haml-mode)
-(require 'nxml-mode)
-(require 'dockerfile-mode)
-(require 'mongo)
-(require 'go-mode)
-
-;; add-to-list
-(add-to-list 'auto-mode-alist'("\\.cs$" . csharp-mode))
-(add-to-list 'auto-mode-alist'("\\.hs$" . haskell-mode))
-(add-to-list 'auto-mode-alist'("\\.lhs$" . haskell-mode))
-(add-to-list 'auto-mode-alist'("Cask" . lisp-mode))
-(add-to-list 'auto-mode-alist '("\\.json.jinja2$" . javascript-mode))
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yml.sample$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yml.erb$" . yaml-mode))
-(add-to-list 'auto-mode-alist'("\\.haml$" . haml-mode))
-(add-to-list 'auto-mode-alist'("\\.plist$" . nxml-mode))
-(add-to-list 'auto-mode-alist'("\\.xml$" . nxml-mode))
-(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
-(add-to-list 'auto-mode-alist'("\\.go$" . go-mode))
+(use-package font-lock
+  :init
+  (global-font-lock-mode t))
 
 ;; eldoc
 (use-package eldoc-mode
   :hook racer-mode)
+
+;; <hoge>-mode
+(use-package go-mode
+  :mode "\\.go$")
+(use-package scala-mode
+  :mode "\\.scala$")
+(use-package csharp-mode
+  :mode "\\.cs$")
+(use-package haskell-mode
+  :mode ("\\.hs$" "\\.lhs$"))
+
+(use-package yaml-mode
+  :mode ("\\.yml$" "\\.yml.sample$" "\\.yml.erb$"))
+(use-package haml-mode
+  :mode "\\.haml$")
+(use-package nxml-mode
+  :mode ("\\.xml$" "\\.plist$"))
+
+(use-package fish-mode
+  :mode "\\.fis$")
+(use-package dockerfile-mode
+  :mode "Dockefile")
+
+(use-package lisp-mode
+  :mode "Cask")
+(use-package javascript-mode
+  :mode "\\.json.jinja2$")
 
 (provide 'develop-common)
 ;;; develop-common.el ends here
