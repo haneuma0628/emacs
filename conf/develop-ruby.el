@@ -16,7 +16,6 @@
   ; (robe-mode)
   )
 (add-hook 'enh-ruby-mode-hook 'my-ruby-mode-hook)
-(push 'company-robe company-backends)
 
 ;; rbenv
 (use-package rbenv

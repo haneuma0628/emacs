@@ -20,7 +20,6 @@
 (elpy-enable)
 
 ; jedi(on company)
-(add-to-list 'company-backends 'company-jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 (setq jedi:use-shortcuts t)
