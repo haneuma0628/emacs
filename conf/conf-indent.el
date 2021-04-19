@@ -1,4 +1,4 @@
-;;; config-indent.el ---                             -*- lexical-binding: t; -*-
+;;; conf-indent.el ---                             -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 ;;; Code:
@@ -11,4 +11,4 @@
   (setq highlight-indent-guides-auto-even-face-perc 5))
 
 (provide 'config-indent)
-;;; config-indent.el ends here
+;;; conf-indent.el ends here

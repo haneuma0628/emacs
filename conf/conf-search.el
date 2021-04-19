@@ -1,4 +1,4 @@
-;;; config-search.el ---                             -*- lexical-binding: t; -*-
+;;; conf-search.el ---                             -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; 検索に関する設定
 ;; ag, wgrep など
@@ -19,4 +19,4 @@
                            (wgrep-ag-setup)))
 
 (provide 'config-search)
-;;; config-search.el ends here
+;;; conf-search.el ends here

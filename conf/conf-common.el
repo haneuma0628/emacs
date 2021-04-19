@@ -1,4 +1,4 @@
-;;; config-common.el ---                             -*- lexical-binding: t; -*-
+;;; conf-common.el ---                             -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 ;;; Code:
@@ -40,4 +40,4 @@
 (use-package elnode)
 
 (provide 'config-common)
-;;; config-common.el ends here
+;;; conf-common.el ends here

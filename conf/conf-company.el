@@ -1,4 +1,4 @@
-;;; config-company.el ---                            -*- lexical-binding: t; -*-
+;;; conf-company.el ---                            -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 ;;; Code:
@@ -26,4 +26,4 @@
                     :background "gray40")
 
 (provide 'config-company)
-;;; config-company.el ends here
+;;; conf-company.el ends here

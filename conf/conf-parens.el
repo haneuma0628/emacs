@@ -1,4 +1,4 @@
-;;; config-parens.el ---                             -*- lexical-binding: t; -*-
+;;; conf-parens.el ---                             -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 ;;; Code:
@@ -31,4 +31,4 @@
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
 (provide 'config-parens)
-;;; config-parens.el ends here
+;;; conf-parens.el ends here

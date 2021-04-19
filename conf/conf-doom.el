@@ -80,4 +80,4 @@
   :init (doom-modeline-mode 1))
 
 (provide 'display-doom)
-;;; display-doom.el ends here
+;;; conf-doom.el ends here
