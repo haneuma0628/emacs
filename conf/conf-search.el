@@ -1,22 +1,22 @@
 ;;; conf-search.el ---                             -*- lexical-binding: t; -*-
 ;;; Commentary:
-;; 検索に関する設定
-;; ag, wgrep など
+;; ag, wgrep など、検索に関する設定を記述する。
+
 ;;; Code:
 
-;;; ag + wgrep
 ;; ag
-(require 'ag)
-(setq default-process-coding-system 'utf-8-unix) ; ag 検索結果のエンコード指定
-(setq ag-highlight-search t) ; 検索キーワードをハイライト
-(setq ag-reuse-buffers t) ; 検索用バッファを使い回す (検索ごとに新バッファを作らない)
+(use-package ag
+  :init
+  (setq default-process-coding-system 'utf-8-unix)
+  (setq ag-highlight-search t)
+  (setq ag-reuse-buffers t))
 
 ;; wgrep
-(add-hook 'ag-mode-hook '(lambda ()
-                           (require 'wgrep-ag)
-                           (setq wgrep-auto-save-buffer t) ; 編集完了と同時に保存
-                           (setq wgrep-enable-key "r") ; "r" キーで編集モードに
-                           (wgrep-ag-setup)))
+(use-package wgrep-ag
+  :hook (ag-mode . wgrep-ag-setup)
+  :init
+  (setq wgrep-auto-save-buffer t)
+  (setq wgrep-enable-key "r"))
 
 (provide 'config-search)
 ;;; conf-search.el ends here
