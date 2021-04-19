@@ -40,10 +40,11 @@
 
 ; 各種設定(未分類)
 (load "config-common")
-(load "config-company")
-(load "config-parens")
-(load "config-search")
-(load "config-indent")
+(load "conf-company")
+(load "conf-parens")
+(load "conf-search")
+(load "conf-indent")
+(load "conf-org")
 ; テンプレート
 (load "template")
 ; キーバインド
@@ -64,7 +65,6 @@
 (load "edit-common")
 (load "edit-yatex")
 (load "edit-markdown")
-(load "edit-org")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
