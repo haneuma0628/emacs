@@ -18,5 +18,12 @@
 (add-hook 'enh-ruby-mode-hook 'my-ruby-mode-hook)
 (push 'company-robe company-backends)
 
+;; rbenv
+(use-package rbenv
+  :init
+  (global-rbenv-mode)
+  (setq rbenv-installation-dir "/usr/local/rbenv")
+)
+
 (provide 'develop-ruby)
 ;;; develop-ruby.el ends here
