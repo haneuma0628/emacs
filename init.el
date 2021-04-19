@@ -3,6 +3,14 @@
 ;; init.el
 
 ;;; Code:
+
+;; package
+(require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; fix that cannot connect melpa, gnu
+(load-library "url-handlers")
+
 ;; Cask
 (require 'cask "/usr/local/opt/cask/cask.el")
 (cask-initialize)
@@ -11,47 +19,29 @@
 (require 'pallet)
 (pallet-mode t)
 
-;; package
-(require 'package)
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-
 ;; use-package
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "<path where use-package is installed>")
   (require 'use-package))
 
-;; refs https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
-;;; 各ディレクトリにパスを通す
-(defun add-to-load-path (&rest paths)
-  (let (path)
-    (dolist (path paths paths)
-      (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-            (normal-top-level-add-subdirs-to-load-path))))))
-(add-to-load-path "conf" ".cask" "site-lisp")
-
-(setq auto-window-vscroll nil)
+;; conf
+(add-to-list 'load-path "~/.emacs.d/conf")
 
 ; 各種設定(未分類)
-(load "config-common")
+(load "conf-common")
 (load "conf-company")
 (load "conf-parens")
 (load "conf-search")
 (load "conf-indent")
 (load "conf-org")
+(load "conf-doom")
 ; テンプレート
 (load "template")
 ; キーバインド
 (load "keybind")
 ; 見た目
 (load "display")
-(load "display-doom")
 ; for develop
 (load "develop-common")
 (load "develop-php")
