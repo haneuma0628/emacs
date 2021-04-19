@@ -3,29 +3,22 @@
 ;;
 ;;; Code:
 
-;; hive-ql
-(require 'sql)
-(require 'sql-indent)
-;; (autoload 'sql-mode "sql" "SQL Edit mode" t)
-(add-to-list 'auto-mode-alist '("\\.hql$" . sql-mode))
-(add-to-list 'auto-mode-alist '("\\.hql.jinja2$" . sql-mode))
+(use-package sql
+  :mode ("\\.hql\\" . sql-mode))
 
-(eval-after-load "sql"
-  '(load-library "sql-indent"))
-(setq sql-indent-offset 2)
-(add-hook 'sql-mode-hook 'sqlind-minor-mode)
-
-(defvar my-sql-indentation-offsets-alist
-  `((select-clause 0)
-    (insert-clause 0)
-    (delete-clause 0)
-    (update-clause 0)
-    ,@sqlind-default-indentation-offsets-alist))
-
-(add-hook 'sqlind-minor-mode-hook
-    (lambda ()
-       (setq sqlind-indentation-offsets-alist
-             my-sql-indentation-offsets-alist)))
+(use-package sql-indent
+  :after sql
+  :hook (sql-mode . sqlind-minor-mode)
+  :config
+  (load-library "sql-indent")
+  (defvar my-sql-indentation-offsets-alist
+    `((select-clause 0)
+      (insert-clause 0)
+      (delete-clause 0)
+      (update-clause 0)
+      ,@sqlind-default-indentation-offsets-alist))
+  (setq sqlind-indentation-offsets-alist
+        my-sql-indentation-offsets-alist))
 
 (provide 'develop-hive)
 ;;; develop-hive.el ends here
