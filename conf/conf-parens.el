@@ -2,23 +2,24 @@
 ;;; Commentary:
 ;;
 ;;; Code:
-;; 括弧補完
+
+;; かっこを補完する
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
-;; 対応括弧の削除機能の無効化
+;; 対応かっこの削除機能の無効化
 (ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
 (ad-activate 'delete-backward-char)
 
-;; 対の括弧を強調
+;; 対のかっこを強調
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
-;; カッコを虹色にシンタックスハイライトする
+;; かっこを虹色にシンタックスハイライトする
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; 括弧の色を強調
+;; かっこの色を強調
 (require 'cl-lib)
 (require 'color)
 (defun rainbow-delimiters-using-stronger-colors ()
