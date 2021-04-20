@@ -4,7 +4,7 @@
 ;;; Code:
 
 (use-package sql
-  :mode ("\\.hql\\" . sql-mode))
+  :mode ("\\.hql$" . sql-mode))
 
 (use-package sql-indent
   :after sql
