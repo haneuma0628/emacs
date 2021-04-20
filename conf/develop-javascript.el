@@ -22,6 +22,7 @@
   :hook js2-mode)
 
 ;; jQuery
+;; company-tern が melpa からダウンロードできないので、auto-complete を使う
 (use-package tern-auto-complete
   :after tern
   :config
