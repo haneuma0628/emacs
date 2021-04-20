@@ -18,5 +18,6 @@ kkcrc
 network-security.data
 
 .python-environments
+conf/.tern-port
 
 bookmarks
