@@ -13,7 +13,6 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-rust")
-(depends-on "jedi")
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "magit")
@@ -68,6 +67,7 @@
 (depends-on "enh-ruby-mode")
 
 ;; Python
+(depends-on "jedi")
 (depends-on "company-jedi")
 (depends-on "py-autopep8")
 (depends-on "elpy")
