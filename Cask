@@ -58,6 +58,7 @@
 (depends-on "js-auto-format-mode")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
+(depends-on "tide")
 
 ;; Ruby
 (depends-on "rbenv")
@@ -82,9 +83,6 @@
 
 ;; Go
 (depends-on "go-mode")
-
-;; tide
-(depends-on "tide")
 
 ;; git
 (depends-on "git-gutter+")

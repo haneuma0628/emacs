@@ -21,8 +21,7 @@
 (use-package rbenv
   :init
   (global-rbenv-mode)
-  (setq rbenv-installation-dir "/usr/local/rbenv")
-)
+  (setq rbenv-installation-dir "/usr/local/rbenv"))
 
 (provide 'develop-ruby)
 ;;; develop-ruby.el ends here

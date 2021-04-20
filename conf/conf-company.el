@@ -16,7 +16,6 @@
   :after company
   :config
   (push 'company-jedi company-backends))
-
 (use-package company-robe
   :after company
   :config
