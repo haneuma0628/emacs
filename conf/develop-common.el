@@ -14,7 +14,10 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode)
   :config
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  ;; disable jshint since we prefer eslint checking
+  (custom-set-variables
+   '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
 
 ;; color
 (use-package font-lock
